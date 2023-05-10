@@ -1,7 +1,10 @@
 {
    "Python_script": {
        "api_url": "http://api.openweathermap.org/data/2.5/weather",
-       "api_key": "1ab917e7eee961089f0c045f3f7a026b"
+       "api_key": "1ab917e7eee961089f0c045f3f7a026b",
+       "db_filename": "weather.db",
+       "table_name": "weather_data",
+       "cities": ["Toulouse","Nantes","Nice","Paris","Cholet","Angers","Rennes"]
    }
 }
 

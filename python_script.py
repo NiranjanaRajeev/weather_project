@@ -1,5 +1,8 @@
 import requests
 import json
+import sqlite3
+import time
+import datetime
 
 # Read the JSON config file
 with open('config.json') as f:
@@ -8,7 +11,26 @@ with open('config.json') as f:
 # Read the configuration parameters
 API_URL = config['Python_script']['api_url']
 API_KEY = config['Python_script']['api_key']
+DB_FILENAME = config['Python_script']['db_filename']
+TABLE_NAME = config['Python_script']['table_name']
+cities = config['Python_script']['cities']
 
-r = requests.get(url=API_URL, params={"q": "Toulouse", "appid": API_KEY, "units": "metric"})
+conn = sqlite3.connect(DB_FILENAME)
+cursor = conn.cursor()
+cursor.execute(f"CREATE TABLE IF NOT EXISTS {TABLE_NAME} (city TEXT, timestamp INTEGER, temperature REAL, humidity INTEGER, PRIMARY KEY (city, timestamp))")
 
-print(r.content.strip())
+while True:
+    for city in cities:
+        response = requests.get(API_URL, params={"q": city, "appid": API_KEY, "units": "metric"})
+        if response.status_code == 200:
+            data = response.json()
+            temperature = data["main"]["temp"]
+            humidity = data["main"]["humidity"]
+            timestamp = int(time.time())
+            cursor.execute(f"INSERT OR REPLACE INTO {TABLE_NAME} (city, timestamp, temperature, humidity) VALUES (?, ?, ?, ?)", (city, timestamp, temperature, humidity))
+            conn.commit()
+        else:
+            print(f"Error fetching weather data for {city}: {response.status_code} - {response.reason}")
+    time.sleep(60)
+
+conn.close()
