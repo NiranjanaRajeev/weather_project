@@ -1,8 +1,14 @@
 import requests
+import json
 
-api_url = 'http://api.openweathermap.org/data/2.5/weather'
-appid = '1ab917e7eee961089f0c045f3f7a026b'
+# Read the JSON config file
+with open('config.json') as f:
+    config = json.load(f)
+    
+# Read the configuration parameters
+API_URL = config['Python_script']['api_url']
+API_KEY = config['Python_script']['api_key']
 
-r = requests.get(url=api_url, params={"q": "Toulouse", "appid": appid, "units": "metric"})
+r = requests.get(url=API_URL, params={"q": "Toulouse", "appid": API_KEY, "units": "metric"})
 
 print(r.content.strip())
