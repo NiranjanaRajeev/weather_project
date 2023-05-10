@@ -17,7 +17,7 @@ cities = config['Python_script']['cities']
 
 conn = sqlite3.connect(DB_FILENAME)
 cursor = conn.cursor()
-cursor.execute(f"CREATE TABLE IF NOT EXISTS {TABLE_NAME} (city TEXT, timestamp INTEGER, temperature REAL, humidity INTEGER, PRIMARY KEY (city, timestamp))")
+cursor.execute(f"CREATE TABLE IF NOT EXISTS {TABLE_NAME} (city TEXT, time TEXT, temperature REAL, humidity INTEGER, PRIMARY KEY (city, time))")
 
 while True:
     for city in cities:
@@ -27,8 +27,23 @@ while True:
             temperature = data["main"]["temp"]
             humidity = data["main"]["humidity"]
             timestamp = int(time.time())
-            cursor.execute(f"INSERT OR REPLACE INTO {TABLE_NAME} (city, timestamp, temperature, humidity) VALUES (?, ?, ?, ?)", (city, timestamp, temperature, humidity))
-            conn.commit()
+            
+            # Check if an entry exists for this city in the database
+            cursor.execute(f"SELECT * FROM {TABLE_NAME} WHERE city = ? ORDER BY time DESC LIMIT 1", (city,))
+            existing_data = cursor.fetchone()
+
+            # If an entry exists, update it with the latest weather data
+            if existing_data:
+                existing_timestamp = existing_data[1]
+                if timestamp > existing_timestamp:
+                    dt_string = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S %d-%m-%Y ')
+                    cursor.execute(f"UPDATE {TABLE_NAME} SET time = ?, temperature = ?, humidity = ? WHERE city = ? AND timestamp = ?", (dt_string, temperature, humidity, city, existing_timestamp))
+                    conn.commit()
+            # Otherwise, insert a new entry for the city with the latest weather data
+            else:
+                dt_string = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S %d-%m-%Y ')
+                cursor.execute(f"INSERT INTO {TABLE_NAME} (city, time, temperature, humidity) VALUES (?, ?, ?, ?)", (city, dt_string, temperature, humidity))
+                conn.commit()
         else:
             print(f"Error fetching weather data for {city}: {response.status_code} - {response.reason}")
     time.sleep(60)
