@@ -21,7 +21,7 @@ def read_config(config_file):
 def create_table(db_filename, table_name):
     conn = sqlite3.connect(db_filename)
     cursor = conn.cursor()
-    cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (city TEXT, timestamp INTEGER, temperature REAL, humidity INTEGER, PRIMARY KEY (city, timestamp))")
+    cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (city TEXT, timestamp INTEGER, temperature REAL, temp_min REAL, temp_max REAL, humidity INTEGER, PRIMARY KEY (city, timestamp))")
     conn.close()
 
 def fetch_weather_data(api_url, api_key, city):
@@ -29,14 +29,16 @@ def fetch_weather_data(api_url, api_key, city):
     if response.status_code == 200:
         data = response.json()
         temperature = data["main"]["temp"]
+        temp_min = data["main"]["temp_min"]
+        temp_max = data["main"]["temp_max"]
         humidity = data["main"]["humidity"]
         timestamp = int(time.time())
-        return temperature, humidity, timestamp
+        return temperature, temp_min, temp_max, humidity, timestamp
     else:
         print(f"Error fetching weather data for {city}: {response.status_code} - {response.reason}")
-        return None, None, None
+        return None, None, None, None, None
 
-def update_database(db_filename, table_name, city, temperature, humidity, timestamp):
+def update_database(db_filename, table_name, city, temperature, temp_min, temp_max, humidity, timestamp):
     conn = sqlite3.connect(db_filename)
     cursor = conn.cursor()
     cursor.execute(f"SELECT * FROM {table_name} WHERE city = ? ORDER BY timestamp DESC LIMIT 1", (city,))
@@ -44,10 +46,10 @@ def update_database(db_filename, table_name, city, temperature, humidity, timest
     if existing_data:
         existing_timestamp = existing_data[1]
         if timestamp > existing_timestamp:
-            cursor.execute(f"UPDATE {table_name} SET timestamp = ?, temperature = ?, humidity = ? WHERE city = ? AND timestamp = ?", (timestamp, temperature, humidity, city, existing_data[1]))
+            cursor.execute(f"UPDATE {table_name} SET timestamp = ?, temperature = ?, temp_min = ?, temp_max = ?, humidity = ? WHERE city = ? AND timestamp = ?", (timestamp, temperature,temp_min,temp_max, humidity, city, existing_data[1]))
             conn.commit()
     else:
-        cursor.execute(f"INSERT INTO {table_name} (city, timestamp, temperature, humidity) VALUES (?, ?, ?, ?)", (city, timestamp, temperature, humidity))
+        cursor.execute(f"INSERT INTO {table_name} (city, timestamp, temperature,temp_min, temp_max, humidity) VALUES (?, ?, ?, ?, ?, ?)", (city, timestamp, temperature,temp_min, temp_max, humidity))
         conn.commit()
     conn.close()
 
@@ -57,9 +59,9 @@ def main():
 
     while True:
         for city in cities:
-            temperature, humidity, timestamp = fetch_weather_data(api_url, api_key, city)
-            if temperature is not None and humidity is not None and timestamp is not None:
-                update_database(db_filename, table_name, city, temperature, humidity, timestamp)
+            temperature,temp_min,temp_max, humidity, timestamp = fetch_weather_data(api_url, api_key, city)
+            if temperature is not None and temp_min is not None and temp_max is not None and humidity is not None and timestamp is not None:
+                update_database(db_filename, table_name, city, temperature, temp_min, temp_max, humidity, timestamp)
         time.sleep(60)
 
 if __name__ == '__main__':
