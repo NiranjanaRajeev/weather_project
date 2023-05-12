@@ -10,11 +10,11 @@ def read_config(config_file):
         config = json.load(f)
 
     # Read the configuration parameters
-    api_url = config['Python_script']['api_url']
-    api_key = config['Python_script']['api_key']
-    db_filename = config['Python_script']['db_filename']
-    table_name = config['Python_script']['table_name']
-    cities = config['Python_script']['cities']
+    api_url = config['weather_map']['api_url']
+    api_key = config['weather_map']['api_key']
+    db_filename = config['database']['db_filename']
+    table_name = config['database']['table_name']
+    cities = config['general']['cities']
 
     return api_url, api_key, db_filename, table_name, cities
 
