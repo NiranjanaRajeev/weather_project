@@ -21,7 +21,7 @@ def read_config(config_file):
 def create_table(db_filename, table_name):
     conn = sqlite3.connect(db_filename)
     cursor = conn.cursor()
-    cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (city TEXT, timestamp INTEGER, temperature REAL, temp_min REAL, temp_max REAL, humidity INTEGER, PRIMARY KEY (city, timestamp))")
+    cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (city TEXT, time TEXT, temperature REAL, temp_min REAL, temp_max REAL, humidity INTEGER, PRIMARY KEY (city, time))")
     conn.close()
 
 def fetch_weather_data(api_url, api_key, city):
@@ -41,15 +41,16 @@ def fetch_weather_data(api_url, api_key, city):
 def update_database(db_filename, table_name, city, temperature, temp_min, temp_max, humidity, timestamp):
     conn = sqlite3.connect(db_filename)
     cursor = conn.cursor()
-    cursor.execute(f"SELECT * FROM {table_name} WHERE city = ? ORDER BY timestamp DESC LIMIT 1", (city,))
+    cursor.execute(f"SELECT * FROM {table_name} WHERE city = ? ORDER BY time DESC LIMIT 1", (city,))
     existing_data = cursor.fetchone()
     if existing_data:
-        existing_timestamp = existing_data[1]
-        if timestamp > existing_timestamp:
-            cursor.execute(f"UPDATE {table_name} SET timestamp = ?, temperature = ?, temp_min = ?, temp_max = ?, humidity = ? WHERE city = ? AND timestamp = ?", (timestamp, temperature,temp_min,temp_max, humidity, city, existing_data[1]))
-            conn.commit()
+        existing_time = existing_data[1]
+        dt_string = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S %d-%m-%Y ')
+        cursor.execute(f"UPDATE {table_name} SET time = ?, temperature = ?, temp_min = ?, temp_max = ?, humidity = ? WHERE city = ? AND time = ?", (dt_string, temperature,temp_min,temp_max, humidity, city, existing_time))
+        conn.commit()
     else:
-        cursor.execute(f"INSERT INTO {table_name} (city, timestamp, temperature,temp_min, temp_max, humidity) VALUES (?, ?, ?, ?, ?, ?)", (city, timestamp, temperature,temp_min, temp_max, humidity))
+        dt_string = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S %d-%m-%Y ')
+        cursor.execute(f"INSERT INTO {table_name} (city, time, temperature,temp_min, temp_max, humidity) VALUES (?, ?, ?, ?, ?, ?)", (city, dt_string, temperature,temp_min, temp_max, humidity))
         conn.commit()
     conn.close()
 
