@@ -63,7 +63,7 @@ def main():
             temperature,temp_min,temp_max, humidity, timestamp = fetch_weather_data(api_url, api_key, city)
             if temperature is not None and temp_min is not None and temp_max is not None and humidity is not None and timestamp is not None:
                 update_database(db_filename, table_name, city, temperature, temp_min, temp_max, humidity, timestamp)
-        time.sleep(60)
+        time.sleep(600)
 
 if __name__ == '__main__':
     main()
