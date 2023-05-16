@@ -25,33 +25,39 @@ int main() {
     if (connect_to_database(&config, &db) != 0) {
         return 1; // Error connecting to the database
     }
-    city_data cities[config.num_cities];  // Array of city_data structures
-    int value = 0;  
+    
+    
+    int previous_version = 0;
+    while(1) {
+    	if(is_database_updated(&db,&previous_version)) {
+    	   char *sql = malloc(strlen(config.table_name) + 20);
+           sprintf(sql, "SELECT * FROM %s", config.table_name);
+           char *err_msg = 0; 
+           city_data cities[config.num_cities];  // Array of city_data structures
+           int value = 0;  
 
-    // Create the callback data structure
-    callback_data cb_data;
-    cb_data.cities = cities;
-    cb_data.param = &value;
-
-    char *sql = malloc(strlen(config.table_name) + 20);
-    sprintf(sql, "SELECT * FROM %s", config.table_name);
-    char *err_msg = 0; 
-        
-    int rc = sqlite3_exec(db, sql, callback, &cb_data, &err_msg);
+           // Create the callback data structure
+           callback_data cb_data;
+           cb_data.cities = cities;
+           cb_data.param = &value;
+           int rc = sqlite3_exec(db, sql, callback, &cb_data, &err_msg);
     
 
-    if (rc != SQLITE_OK ) {
+           if (rc != SQLITE_OK ) {
         
-        fprintf(stderr, "Failed to select data\n");
-        fprintf(stderr, "SQL error: %s\n", err_msg);
+             fprintf(stderr, "Failed to select data\n");
+             fprintf(stderr, "SQL error: %s\n", err_msg);
 
-        sqlite3_free(err_msg);
-        sqlite3_close(db);
+             sqlite3_free(err_msg);
+             sqlite3_close(db);
         
-        return 1;
-    } 
+             return 1;
+            } 
     
-    generate_files(cities,config.num_cities, "../output");
+           generate_files(cities,config.num_cities, "../output");
+         }
+         sleep(60);
+     }
     
     sqlite3_close(db);
     // Free allocated memory for config parameters

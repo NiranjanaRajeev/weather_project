@@ -103,8 +103,32 @@ void generate_files(const city_data* cities, int no_cities, const char* output_d
         // Close the file
         fclose(file);
     }
+} 
+bool is_database_updated(sqlite3 **db, int *previous_version) {
+    sqlite3_stmt *statement;
+    int result = sqlite3_prepare_v2(*db, "PRAGMA data_version;", -1, &statement, NULL);
+    if (result != SQLITE_OK) {
+        fprintf(stderr, "Failed to execute PRAGMA data_version: %s\n", sqlite3_errmsg(*db));
+        return false;
+    }
+    int current_version = 0;
+    result = sqlite3_step(statement);
+    if (result == SQLITE_ROW) {
+        current_version = sqlite3_column_int(statement, 0);
+    }
+    
+    bool updated = false;
+    if(current_version != *previous_version) {
+    	printf("Database updated \n");
+    	updated = true;
+    	*previous_version = current_version;
+    }
+    else {
+    	printf("Database not updated \n");
+    }
+    
+    sqlite3_finalize(statement);
+    
+    return updated;
+
 }
-
-
-
-

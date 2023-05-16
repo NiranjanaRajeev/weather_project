@@ -2,6 +2,8 @@
 #include <sqlite3.h>
 #include <jansson.h>
 #include <string.h>
+#include <stdbool.h>
+#include <unistd.h>
 
 typedef struct {
     const char *db_filename;
@@ -31,3 +33,4 @@ int load_config(const char *filename, Config *config);
 int callback(void *data, int argc, char **argv, char **column_names);
 int connect_to_database(const Config *config, sqlite3 **db);
 void generate_files(const city_data* cities, int no_cities, const char* output_dir);
+bool is_database_updated(sqlite3 **db, int *previous_version);
