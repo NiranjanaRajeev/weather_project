@@ -84,14 +84,19 @@ void generate_files(const city_data* cities, int no_cities, const char* output_d
         // Create file for the current city
         char filename[100];
         snprintf(filename, sizeof(filename), "%s/%s.csv", output_dir, city->name);
-        FILE* file = fopen(filename, "w");
+        FILE* file = fopen(filename, "a");
         if (file == NULL) {
             fprintf(stderr, "Failed to create file for city: %s\n", city->name);
             continue;
         }
-
-        // Write city data to file in CSV format
-        fprintf(file, "Name,Time,Temperature,Temp Min,Temp Max,Humidity\n");
+        
+        long file_size;
+        fseek(file, 0, SEEK_END);
+        file_size = ftell(file);
+        
+        if(file_size == 0) {
+            fprintf(file, "Name,Time,Temperature,Temp Min,Temp Max,Humidity\n");
+        }    
         fprintf(file, "%s,%s,%.2f,%.2f,%.2f,%.2f\n",
                 city->name, city->time, city->temperature, city->temp_min, city->temp_max, city->humidity);
 
