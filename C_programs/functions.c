@@ -1,26 +1,26 @@
 #include "functions.h"
 
 int callback(void *data, int argc, char **argv, 
-                    char **columnNames) {
+                    char **column_names) {
     
     callback_data* cb_data = (callback_data*)data;
     city_data* cities = cb_data->cities;
     int* param = cb_data->param;
 
     for (int i = 0; i < argc; i++) {
-        if (strcmp(columnNames[i], "city") == 0) {
+        if (strcmp(column_names[i], "city") == 0) {
             cities[*param].name = malloc(strlen(argv[i]) + 1);
             strcpy(cities[*param].name, argv[i]);
-        } else if (strcmp(columnNames[i], "time") == 0) {
+        } else if (strcmp(column_names[i], "time") == 0) {
             cities[*param].time = malloc(strlen(argv[i]) + 1);
             strcpy(cities[*param].time, argv[i]);
-        } else if (strcmp(columnNames[i], "temperature") == 0) {
+        } else if (strcmp(column_names[i], "temperature") == 0) {
             cities[*param].temperature = atof(argv[i]);
-        } else if (strcmp(columnNames[i], "temp_min") == 0) {
+        } else if (strcmp(column_names[i], "temp_min") == 0) {
             cities[*param].temp_min = atof(argv[i]);
-        } else if (strcmp(columnNames[i], "temp_max") == 0) {
+        } else if (strcmp(column_names[i], "temp_max") == 0) {
             cities[*param].temp_max = atof(argv[i]);
-        } else if (strcmp(columnNames[i], "humidity") == 0) {
+        } else if (strcmp(column_names[i], "humidity") == 0) {
             cities[*param].humidity = atof(argv[i]);
         }
     }
@@ -75,6 +75,29 @@ int connect_to_database(const Config *config, sqlite3 **db) {
     }
 
     return 0;
+}
+
+void generate_files(const city_data* cities, int no_cities, const char* output_dir) {
+    for (int i = 0; i < no_cities; i++) {
+        const city_data* city = &cities[i];
+
+        // Create file for the current city
+        char filename[100];
+        snprintf(filename, sizeof(filename), "%s/%s.csv", output_dir, city->name);
+        FILE* file = fopen(filename, "w");
+        if (file == NULL) {
+            fprintf(stderr, "Failed to create file for city: %s\n", city->name);
+            continue;
+        }
+
+        // Write city data to file in CSV format
+        fprintf(file, "Name,Time,Temperature,Temp Min,Temp Max,Humidity\n");
+        fprintf(file, "%s,%s,%.2f,%.2f,%.2f,%.2f\n",
+                city->name, city->time, city->temperature, city->temp_min, city->temp_max, city->humidity);
+
+        // Close the file
+        fclose(file);
+    }
 }
 
 

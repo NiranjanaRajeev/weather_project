@@ -26,7 +26,7 @@ int main() {
         return 1; // Error connecting to the database
     }
     city_data cities[config.num_cities];  // Array of city_data structures
-    int value = 0;   
+    int value = 0;  
 
     // Create the callback data structure
     callback_data cb_data;
@@ -50,15 +50,9 @@ int main() {
         
         return 1;
     } 
-    for (int i = 0; i < config.num_cities; i++) {
-        printf("City: %s\n", cities[i].name);
-        printf("Time: %s\n", cities[i].time);
-        printf("Temperature: %.2f\n", cities[i].temperature);
-        printf("Temp Min: %.2f\n", cities[i].temp_min);
-        printf("Temp Max: %.2f\n", cities[i].temp_max);
-        printf("Humidity: %.2f\n", cities[i].humidity);
-        printf("\n");
-    }
+    
+    generate_files(cities,config.num_cities, "../output");
+    
     sqlite3_close(db);
     // Free allocated memory for config parameters
     free((void *)config.db_filename);

@@ -6,8 +6,8 @@
 typedef struct {
     const char *db_filename;
     const char *table_name;
-    const char **city_array;  // Array of city names
-    int num_cities;       // Number of cities
+    const char **city_array;
+    int num_cities;       
     // Add more parameters as needed
 } Config;
 
@@ -28,5 +28,6 @@ typedef struct {
 
 
 int load_config(const char *filename, Config *config);
-int callback(void *data, int argc, char **argv, char **azColName);
+int callback(void *data, int argc, char **argv, char **column_names);
 int connect_to_database(const Config *config, sqlite3 **db);
+void generate_files(const city_data* cities, int no_cities, const char* output_dir);
