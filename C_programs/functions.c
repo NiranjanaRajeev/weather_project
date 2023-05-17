@@ -1,5 +1,26 @@
 #include "functions.h"
 
+void log_action(char* message) {
+    FILE* logfile;
+    logfile = fopen("../log.txt", "a");
+    
+    time_t currentTime;
+    struct tm *timeInfo;
+    char timeString[30];
+
+ // Get the current time
+    currentTime = time(NULL);
+
+ // Convert the current time to the local time
+    timeInfo = localtime(&currentTime);
+
+ // Format the time as "At %H:%M:%S %d-%m-%Y"
+    strftime(timeString, sizeof(timeString), "At %H:%M:%S %d-%m-%Y", timeInfo);
+
+ // Write the formatted time and message to the file
+    fprintf(logfile, "%s %s\n", timeString, message);
+    fclose(logfile);
+}
 int callback(void *data, int argc, char **argv, 
                     char **column_names) {
     
@@ -73,7 +94,8 @@ int connect_to_database(const Config *config, sqlite3 **db) {
         sqlite3_close(*db);
         return 1;
     }
-
+    sprintf(message,"Connected to database");
+    log_action(message);
     return 0;
 }
 bool is_database_updated(sqlite3 **db, int *previous_version) {
@@ -91,12 +113,14 @@ bool is_database_updated(sqlite3 **db, int *previous_version) {
     
     bool updated = false;
     if(current_version != *previous_version) {
-    	printf("Database updated \n");
+    	sprintf(message,"Database updated");
+    	log_action(message);
     	updated = true;
     	*previous_version = current_version;
     }
     else {
-    	printf("Database not updated \n");
+    	sprintf(message,"Database not updated");
+    	log_action(message);
     }
     
     sqlite3_finalize(statement);
@@ -109,6 +133,7 @@ void* generate_files_thread(void* arg) {
     
     while(1) {
     	int current_city;
+    	char city_message[100];
     	pthread_mutex_lock(&data_thread->mutex);
     	current_city = data_thread->current_city++;
     	pthread_mutex_unlock(&data_thread->mutex);
@@ -137,7 +162,8 @@ void* generate_files_thread(void* arg) {
         }    
         fprintf(file, "%s,%s,%.2f,%.2f,%.2f,%.2f\n",
                 city->name, city->time, city->temperature, city->temp_min, city->temp_max, city->humidity);
-
+        sprintf(city_message,"Weather data updated for %s in %s.csv",city->name,city->name);
+        log_action(city_message);
         // Close the file
         fclose(file);
     }

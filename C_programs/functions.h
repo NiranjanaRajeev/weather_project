@@ -36,10 +36,11 @@ typedef struct {
     pthread_mutex_t mutex;
 } thread_data;
 
-
+char message[100];
 
 int load_config(const char *filename, Config *config);
 int callback(void *data, int argc, char **argv, char **column_names);
 int connect_to_database(const Config *config, sqlite3 **db);
 bool is_database_updated(sqlite3 **db, int *previous_version);
 void* generate_files_thread(void* arg);
+void log_action(char* message);
