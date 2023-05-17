@@ -76,8 +76,8 @@ int connect_to_database(const Config *config, sqlite3 **db) {
 
     return 0;
 }
-
-void generate_files(const city_data* cities, int no_cities, const char* output_dir) {
+//file_generation without threads
+/*void generate_files(const city_data* cities, int no_cities, const char* output_dir) {
     for (int i = 0; i < no_cities; i++) {
         const city_data* city = &cities[i];
 
@@ -103,7 +103,7 @@ void generate_files(const city_data* cities, int no_cities, const char* output_d
         // Close the file
         fclose(file);
     }
-} 
+}*/
 bool is_database_updated(sqlite3 **db, int *previous_version) {
     sqlite3_stmt *statement;
     int result = sqlite3_prepare_v2(*db, "PRAGMA data_version;", -1, &statement, NULL);
@@ -132,3 +132,74 @@ bool is_database_updated(sqlite3 **db, int *previous_version) {
     return updated;
 
 }
+//file generation with thread pool
+void* generate_files_thread(void* arg) {
+    thread_data* data_thread = (thread_data*)arg;
+    
+    while(1) {
+    	int current_city;
+    	pthread_mutex_lock(&data_thread->mutex);
+    	current_city = data_thread->current_city++;
+    	pthread_mutex_unlock(&data_thread->mutex);
+    	
+    	if (current_city >= data_thread->num_cities) {
+    	    break;
+    	}
+    	
+    	city_data* city = &data_thread->cities[current_city];
+    	
+    	 // Create file for the current city
+        char filename[100];
+        snprintf(filename, sizeof(filename), "../output/%s.csv", city->name);
+        FILE* file = fopen(filename, "a");
+        if (file == NULL) {
+            fprintf(stderr, "Failed to create file for city: %s\n", city->name);
+            continue;
+        }
+        
+        long file_size;
+        fseek(file, 0, SEEK_END);
+        file_size = ftell(file);
+        
+        if(file_size == 0) {
+            fprintf(file, "Name,Time,Temperature,Temp Min,Temp Max,Humidity\n");
+        }    
+        fprintf(file, "%s,%s,%.2f,%.2f,%.2f,%.2f\n",
+                city->name, city->time, city->temperature, city->temp_min, city->temp_max, city->humidity);
+
+        // Close the file
+        fclose(file);
+    }
+    
+    return NULL;
+
+}
+//file generation with individual threads
+/*void* generate_files_thread(void* arg) {
+    city_data* city = (city_data*)arg;
+
+    // Create file for the current city
+    char filename[100];
+    snprintf(filename, sizeof(filename), "../output/%s.csv", city->name);
+    FILE* file = fopen(filename, "a");
+    if (file == NULL) {
+        fprintf(stderr, "Failed to create file for city: %s\n", city->name);
+        return NULL;
+    }
+
+    long file_size;
+    fseek(file, 0, SEEK_END);
+    file_size = ftell(file);
+
+    if (file_size == 0) {
+        fprintf(file, "Name,Time,Temperature,Temp Min,Temp Max,Humidity\n");
+    }
+    fprintf(file, "%s,%s,%.2f,%.2f,%.2f,%.2f\n",
+            city->name, city->time, city->temperature, city->temp_min, city->temp_max, city->humidity);
+
+    // Close the file
+    fclose(file);
+
+    return NULL;
+}*/	
+

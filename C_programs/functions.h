@@ -4,6 +4,8 @@
 #include <string.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <pthread.h>
+#include <time.h>
 
 typedef struct {
     const char *db_filename;
@@ -27,10 +29,18 @@ typedef struct {
     int* param;
 } callback_data;
 
+typedef struct {
+    city_data* cities;
+    int num_cities;
+    int current_city;
+    pthread_mutex_t mutex;
+} thread_data;
+
 
 
 int load_config(const char *filename, Config *config);
 int callback(void *data, int argc, char **argv, char **column_names);
 int connect_to_database(const Config *config, sqlite3 **db);
-void generate_files(const city_data* cities, int no_cities, const char* output_dir);
+//void generate_files(const city_data* cities, int no_cities, const char* output_dir);
 bool is_database_updated(sqlite3 **db, int *previous_version);
+void* generate_files_thread(void* arg);

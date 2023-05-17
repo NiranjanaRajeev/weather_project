@@ -28,8 +28,10 @@ int main() {
     
     
     int previous_version = 0;
-    while(1) {
+    //without_threads
+   /* while(1) {
     	if(is_database_updated(&db,&previous_version)) {
+    	   clock_t start = clock();
     	   char *sql = malloc(strlen(config.table_name) + 20);
            sprintf(sql, "SELECT * FROM %s", config.table_name);
            char *err_msg = 0; 
@@ -55,10 +57,103 @@ int main() {
             } 
     
            generate_files(cities,config.num_cities, "../output");
+           clock_t end = clock();
+           double execution_time = (double)(end - start) / CLOCKS_PER_SEC;
+           printf("Execution Time: %.4f seconds\n", execution_time);
          }
          sleep(60);
-     }
+     }*/
+     //with thread_pool
+    while(1) {
+    	if(is_database_updated(&db,&previous_version)) {
+    	   clock_t start = clock();
+    	   char *sql = malloc(strlen(config.table_name) + 20);
+           sprintf(sql, "SELECT * FROM %s", config.table_name);
+           char *err_msg = 0; 
+           city_data cities[config.num_cities];  // Array of city_data structures
+           int value = 0;  
+
+           // Create the callback data structure
+           callback_data cb_data;
+           cb_data.cities = cities;
+           cb_data.param = &value;
+           int rc = sqlite3_exec(db, sql, callback, &cb_data, &err_msg);
     
+
+           if (rc != SQLITE_OK ) {
+        
+             fprintf(stderr, "Failed to select data\n");
+             fprintf(stderr, "SQL error: %s\n", err_msg);
+
+             sqlite3_free(err_msg);
+             sqlite3_close(db);
+        
+             return 1;
+            } 
+           
+           pthread_t threads[5];
+           thread_data data_thread;
+           data_thread.cities = cities;
+           data_thread.num_cities = config.num_cities;
+           data_thread.current_city = 0;
+           pthread_mutex_init(&data_thread.mutex, NULL);
+           
+           for (int i = 0; i < 4 ; i++) {
+           	pthread_create(&threads[i], NULL, generate_files_thread, &data_thread);
+           }
+           
+           for (int i = 0; i < 4; i++) {
+           	pthread_join(threads[i], NULL);
+           }
+           pthread_mutex_destroy(&data_thread.mutex);
+           clock_t end = clock();
+           double execution_time = (double)(end - start) / CLOCKS_PER_SEC;
+           printf("Execution Time: %.4f seconds\n", execution_time);
+         }
+         sleep(60);
+    }
+        //with individual threads
+       /* while (1) {
+        if (is_database_updated(&db, &previous_version)) {
+            clock_t start = clock();
+            char *sql = malloc(strlen(config.table_name) + 20);
+            sprintf(sql, "SELECT * FROM %s", config.table_name);
+            char *err_msg = 0;
+            city_data cities[config.num_cities];  // Array of city_data structures
+            int value = 0;
+
+            // Create the callback data structure
+            callback_data cb_data;
+            cb_data.cities = cities;
+            cb_data.param = &value;
+            int rc = sqlite3_exec(db, sql, callback, &cb_data, &err_msg);
+
+            if (rc != SQLITE_OK) {
+                fprintf(stderr, "Failed to select data\n");
+                fprintf(stderr, "SQL error: %s\n", err_msg);
+
+                sqlite3_free(err_msg);
+                sqlite3_close(db);
+
+                return 1;
+            }
+
+            // Create threads for file generation
+            pthread_t threads[config.num_cities];
+            for (int i = 0; i < config.num_cities; i++) {
+                pthread_create(&threads[i], NULL, generate_files_thread, &cities[i]);
+            }
+
+            // Wait for all threads to finish
+            for (int i = 0; i < config.num_cities; i++) {
+                pthread_join(threads[i], NULL);
+            }
+            clock_t end = clock();
+            double execution_time = (double)(end - start) / CLOCKS_PER_SEC;
+            printf("Execution Time: %.4f seconds\n", execution_time);
+        }
+        sleep(60);
+    }*/
     sqlite3_close(db);
     // Free allocated memory for config parameters
     free((void *)config.db_filename);
