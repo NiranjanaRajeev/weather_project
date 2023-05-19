@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <time.h>
+#include <signal.h>
 
 typedef struct {
     const char *db_filename;
@@ -17,6 +18,7 @@ typedef struct {
 
 typedef struct {
     char *name;
+    long int timestamp;
     char *time;
     float temperature;
     float temp_min;
@@ -36,7 +38,7 @@ typedef struct {
     pthread_mutex_t mutex;
 } thread_data;
 
-char message[100];
+char message[200];
 
 int load_config(const char *filename, Config *config);
 int callback(void *data, int argc, char **argv, char **column_names);

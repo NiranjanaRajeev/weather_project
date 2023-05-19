@@ -32,6 +32,9 @@ int callback(void *data, int argc, char **argv,
         if (strcmp(column_names[i], "city") == 0) {
             cities[*param].name = malloc(strlen(argv[i]) + 1);
             strcpy(cities[*param].name, argv[i]);
+        }
+          else if (strcmp(column_names[i], "timestamp") == 0) {
+            cities[*param].timestamp = atof(argv[i]);
         } else if (strcmp(column_names[i], "time") == 0) {
             cities[*param].time = malloc(strlen(argv[i]) + 1);
             strcpy(cities[*param].time, argv[i]);
@@ -57,7 +60,8 @@ int load_config(const char *filename, Config *config) {
     // Open and parse the config file
     root = json_load_file(filename, 0, &error);
     if (!root) {
-        fprintf(stderr, "Error: %s\n", error.text);
+        sprintf(message, "Error: %s\n", error.text);
+        log_action(message);
         return 1;
     }
 
@@ -69,7 +73,8 @@ int load_config(const char *filename, Config *config) {
      // Get the "cities" array from the JSON object
     json_t *cities_array = json_object_get(json_object_get(root, "general"), "cities");
     if (!json_is_array(cities_array)) {
-        fprintf(stderr, "Error: 'cities' is not an array.\n");
+        sprintf(message, "Error: 'cities' is not an array.\n");
+        log_action(message);
         return 1;
     }
 
@@ -90,7 +95,8 @@ int connect_to_database(const Config *config, sqlite3 **db) {
 
     int rc = sqlite3_open(db_path, db);
     if (rc != SQLITE_OK) {
-        fprintf(stderr, "Cannot open database: %s\n", sqlite3_errmsg(*db));
+        sprintf(message, "Cannot open database: %s\n", sqlite3_errmsg(*db));
+        log_action(message);
         sqlite3_close(*db);
         return 1;
     }
@@ -102,7 +108,8 @@ bool is_database_updated(sqlite3 **db, int *previous_version) {
     sqlite3_stmt *statement;
     int result = sqlite3_prepare_v2(*db, "PRAGMA data_version;", -1, &statement, NULL);
     if (result != SQLITE_OK) {
-        fprintf(stderr, "Failed to execute PRAGMA data_version: %s\n", sqlite3_errmsg(*db));
+        sprintf(message, "Failed to execute PRAGMA data_version: %s\n", sqlite3_errmsg(*db));
+        log_action(message);
         return false;
     }
     int current_version = 0;
@@ -149,7 +156,8 @@ void* generate_files_thread(void* arg) {
         snprintf(filename, sizeof(filename), "../output/%s.csv", city->name);
         FILE* file = fopen(filename, "a");
         if (file == NULL) {
-            fprintf(stderr, "Failed to create file for city: %s\n", city->name);
+            sprintf(message, "Failed to create file for city: %s\n", city->name);
+            log_action(message);
             continue;
         }
         
@@ -158,10 +166,10 @@ void* generate_files_thread(void* arg) {
         file_size = ftell(file);
         
         if(file_size == 0) {
-            fprintf(file, "Name,Time,Temperature,Temp Min,Temp Max,Humidity\n");
+            fprintf(file, "Name,Timestamp,Time,Temperature,Temp Min,Temp Max,Humidity\n");
         }    
-        fprintf(file, "%s,%s,%.2f,%.2f,%.2f,%.2f\n",
-                city->name, city->time, city->temperature, city->temp_min, city->temp_max, city->humidity);
+        fprintf(file, "%s,%ld,%s,%.2f,%.2f,%.2f,%.2f\n",
+                city->name,city->timestamp,city->time, city->temperature, city->temp_min, city->temp_max, city->humidity);
         sprintf(city_message,"Weather data updated for %s in %s.csv",city->name,city->name);
         log_action(city_message);
         // Close the file
@@ -170,5 +178,4 @@ void* generate_files_thread(void* arg) {
     
     return NULL;
 
-}	
-
+}

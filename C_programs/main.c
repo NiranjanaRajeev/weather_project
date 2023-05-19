@@ -46,9 +46,10 @@ int main() {
 
            if (rc != SQLITE_OK ) {
         
-             fprintf(stderr, "Failed to select data\n");
-             fprintf(stderr, "SQL error: %s\n", err_msg);
-
+             sprintf(message, "Failed to select data\n");
+             log_action(message);
+             sprintf(message, "SQL error: %s\n", err_msg);
+             log_action(message);
              sqlite3_free(err_msg);
              sqlite3_close(db);
         

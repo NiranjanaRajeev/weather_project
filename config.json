@@ -5,11 +5,11 @@
        },
     "database": {
        "db_filename": "weather.db",
-       "table_name": "weather_data"
+       "table_name": "weather_data",
+       "db_location": "/home/niranjana/Projet_Final"
        },
     "general": {  
        "cities": ["Toulouse","Nantes","Nice","Paris","Cholet","Angers","Rennes"]
   }
 }
    
-
