@@ -1,0 +1,108 @@
+At 14:02:22 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:02:22 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:17:45 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:17:45 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:19:57 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:19:57 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:25:39 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:25:39 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:28:13 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:28:13 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:31:10 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:31:10 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:34:16 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:34:16 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:35:10 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:35:10 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:35:33 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:35:33 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:36:05 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:36:05 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:36:05 19-05-2023 Error: unexpected token near '}'
+
+At 14:37:33 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:37:33 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:53:41 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:53:41 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:53:41 19-05-2023 Error: 'cities' array is NULL.
+
+At 14:54:09 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 14:54:09 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 14:54:09 19-05-2023 Error: 'cities' array is NULL.
+
+At 15:12:22 19-05-2023 Connected to database
+At 15:12:22 19-05-2023 Connected to database
+At 15:12:22 19-05-2023 Connected to database
+At 15:21:07 19-05-2023 Connected to database
+At 15:21:07 19-05-2023 Connected to database
+At 15:23:03 19-05-2023 Connected to database
+At 15:23:03 19-05-2023 Connected to database
+At 15:25:17 19-05-2023 Connected to database
+At 15:25:17 19-05-2023 Connected to database
+At 15:27:14 19-05-2023 Connected to database
+At 15:27:14 19-05-2023 Connected to database
+At 15:32:29 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 15:32:29 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 15:32:29 19-05-2023 Error: 'cities' array is NULL.
+
+At 15:35:25 19-05-2023 Connected to database
+At 15:38:35 19-05-2023 Connected to database
+At 15:40:22 19-05-2023 Connected to database
+At 15:55:34 19-05-2023 Action logged successfully
+At 15:56:06 19-05-2023 Action logged successfully
+At 17:23:05 19-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 17:23:05 19-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 17:23:06 19-05-2023 Database updated
+At 17:23:06 19-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 17:26:26 19-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 17:26:26 19-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 17:26:26 19-05-2023 Database updated
+At 17:26:26 19-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 17:26:43 19-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 17:26:43 19-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 17:26:43 19-05-2023 Database updated
+At 17:26:43 19-05-2023 Database not updated
+At 17:48:17 19-05-2023 Weather data updated for New York in New York.csv
+At 17:48:17 19-05-2023 Weather data updated for London in London.csv
+At 17:48:17 19-05-2023 Weather data updated for Invalid City in Invalid City.csv
+At 17:54:20 19-05-2023 Weather data updated for New York in New York.csv
+At 17:54:20 19-05-2023 Weather data updated for London in London.csv
+At 17:54:20 19-05-2023 Weather data updated for Invalid City in Invalid City.csv
+At 17:54:36 19-05-2023 Weather data updated for New York in New York.csv
+At 17:54:36 19-05-2023 Weather data updated for London in London.csv

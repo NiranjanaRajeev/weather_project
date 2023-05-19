@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <time.h>
-#include <signal.h>
+#include <stdlib.h>
 
 typedef struct {
     const char *db_filename;

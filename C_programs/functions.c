@@ -75,6 +75,14 @@ int load_config(const char *filename, Config *config) {
     if (!json_is_array(cities_array)) {
         sprintf(message, "Error: 'cities' is not an array.\n");
         log_action(message);
+        json_decref(root);
+        return 1;
+    }
+    // Check if cities array is NULL
+    if (json_array_size(cities_array) == 0) {
+        sprintf(message, "Error: 'cities' array is NULL.\n");
+        log_action(message);
+        json_decref(root);
         return 1;
     }
 
@@ -92,12 +100,22 @@ int load_config(const char *filename, Config *config) {
 int connect_to_database(const Config *config, sqlite3 **db) {
     char db_path[100]; 
     snprintf(db_path, sizeof(db_path), "../%s", config->db_filename);
+    
+     // Check if the database file exists
+    FILE *file = fopen(db_path, "r");
+    if (file == NULL) {
+        fprintf(stderr, "Database file does not exist: %s\n", db_path);
+        *db = NULL;
+        return 1;
+    }
+    fclose(file);
 
     int rc = sqlite3_open(db_path, db);
     if (rc != SQLITE_OK) {
         sprintf(message, "Cannot open database: %s\n", sqlite3_errmsg(*db));
         log_action(message);
         sqlite3_close(*db);
+        *db = NULL;
         return 1;
     }
     sprintf(message,"Connected to database");
