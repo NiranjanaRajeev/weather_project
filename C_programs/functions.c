@@ -197,3 +197,44 @@ void* generate_files_thread(void* arg) {
     return NULL;
 
 }
+
+// Function to handle MQTT connection status
+void on_connect(struct mosquitto *mosq, void *userdata, int rc) {
+    if (rc == MOSQ_ERR_SUCCESS) {
+        printf("MQTT connection successful.\n");
+        // Publish initial weather data here if needed
+    } else {
+        printf("MQTT connection failed: %s\n", mosquitto_strerror(rc));
+    }
+}
+
+// Function to handle MQTT message delivery
+void on_publish(struct mosquitto *mosq, void *userdata, int mid) {
+    printf("MQTT message published (mid: %d)\n", mid);
+}
+
+void* publish_data_thread(void* arg) {
+    publish_thread_data *publish_args = (publish_thread_data *)arg;
+    city_data* copy_cities = publish_args->cities;
+    int num_cities = publish_args->num_cities;
+    
+
+    // Publish data for each city
+    for (int i = 0; i < num_cities; i++) {
+        city_data city = copy_cities[i];
+        char topic[100];
+        snprintf(topic, sizeof(topic), "weather/%s", city.name);
+
+        // Format the payload as JSON or any other desired format
+        char payload[200];
+        snprintf(payload, sizeof(payload), "{\"name\": \"%s\", \"timestamp\": %ld, \"time\": \"%s\", \"temperature\": %.2f, \"temp_min\": %.2f, \"temp_max\": %.2f, \"humidity\": %.2f}",
+         city.name, city.timestamp, city.time, city.temperature, city.temp_min, city.temp_max, city.humidity);
+
+
+        // Publish the data to the MQTT broker
+        mosquitto_publish(mqtt_client, NULL, topic, strlen(payload), payload, 0, false);
+    }
+
+    return NULL;
+}
+

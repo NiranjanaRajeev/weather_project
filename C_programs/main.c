@@ -20,10 +20,37 @@ int main() {
     }
     printf("number of cities: %d \n", config.num_cities);
     
+    city_data cities_copy[config.num_cities];
+    
     // Connect to the database
     sqlite3 *db;
     if (connect_to_database(&config, &db) != 0) {
         return 1; // Error connecting to the database
+    }
+    // Initialize Mosquitto library
+    mosquitto_lib_init();
+    
+    // MQTT broker connection settings
+    const char *mqtt_broker = "localhost";
+    int mqtt_port = 1883;
+    const char *mqtt_client_id = "weather_publisher";
+    int keepalive = 300;
+    
+    // Create MQTT client instance
+    mqtt_client = mosquitto_new(mqtt_client_id, true, NULL);
+    if (!mqtt_client) {
+        printf("Failed to create MQTT client.\n");
+        return 1;
+    }
+
+    // Set MQTT callback functions
+    mosquitto_connect_callback_set(mqtt_client, on_connect);
+    mosquitto_publish_callback_set(mqtt_client, on_publish);
+
+    // Connect to the MQTT broker
+    if (mosquitto_connect(mqtt_client, mqtt_broker, mqtt_port, keepalive) != MOSQ_ERR_SUCCESS) {
+        printf("Unable to connect to MQTT broker.\n");
+        return 1;
     }
     
     
@@ -55,6 +82,13 @@ int main() {
         
              return 1;
             } 
+           memcpy(cities_copy, cities, sizeof(cities));
+           publish_thread_data publish_args;
+           publish_args.cities = cities_copy;
+           publish_args.num_cities = config.num_cities;
+           pthread_t publish_thread;
+           pthread_create(&publish_thread, NULL, publish_data_thread, &publish_args);
+           //publish_data(cities_copy,config);
            
            pthread_t threads[5];
            thread_data data_thread;
@@ -66,7 +100,7 @@ int main() {
            for (int i = 0; i < 4 ; i++) {
            	pthread_create(&threads[i], NULL, generate_files_thread, &data_thread);
            }
-           
+           pthread_join(publish_thread, NULL);
            for (int i = 0; i < 4; i++) {
            	pthread_join(threads[i], NULL);
            }

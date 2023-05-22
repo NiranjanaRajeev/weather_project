@@ -7,6 +7,7 @@
 #include <pthread.h>
 #include <time.h>
 #include <stdlib.h>
+#include <mosquitto.h>
 
 typedef struct {
     const char *db_filename;
@@ -38,7 +39,14 @@ typedef struct {
     pthread_mutex_t mutex;
 } thread_data;
 
+typedef struct {
+    city_data* cities;
+    int num_cities;
+} publish_thread_data;
+
 char message[200];
+// MQTT publisher variables
+struct mosquitto *mqtt_client;
 
 int load_config(const char *filename, Config *config);
 int callback(void *data, int argc, char **argv, char **column_names);
@@ -46,3 +54,8 @@ int connect_to_database(const Config *config, sqlite3 **db);
 bool is_database_updated(sqlite3 **db, int *previous_version);
 void* generate_files_thread(void* arg);
 void log_action(char* message);
+
+void on_connect(struct mosquitto *mosq, void *userdata, int rc);
+void on_publish(struct mosquitto *mosq, void *userdata, int mid);
+//void publish_data(city_data *cities_copy,Config config);
+void* publish_data_thread(void* arg);
