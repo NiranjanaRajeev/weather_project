@@ -50,7 +50,7 @@ def update_database(db_filepath, table_name, city, temperature, temp_min, temp_m
     if existing_data:
         existing_time = existing_data[1]
         dt_string = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S %d-%m-%Y ')
-        cursor.execute(f"UPDATE {table_name} SET timestamp = ?, time = ?, temperature = ?, temp_min = ?, temp_max = ?, humidity = ? WHERE city = ? AND time = ?", (timestamp,dt_string, temperature,temp_min,temp_max, humidity, city, existing_time))
+        cursor.execute(f"UPDATE {table_name} SET timestamp = ?, time = ?, temperature = ?, temp_min = ?, temp_max = ?, humidity = ? WHERE city = ? AND timestamp = ?", (timestamp,dt_string, temperature,temp_min,temp_max, humidity, city, existing_time))
         conn.commit()
     else:
         dt_string = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S %d-%m-%Y ')
