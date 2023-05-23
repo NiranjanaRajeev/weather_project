@@ -2,7 +2,7 @@
 
 void log_action(char* message) {
     FILE* logfile;
-    logfile = fopen("../log.txt", "a");
+    logfile = fopen("log.txt", "a");
     
     time_t currentTime;
     struct tm *timeInfo;
@@ -171,7 +171,7 @@ void* generate_files_thread(void* arg) {
     	
     	 // Create file for the current city
         char filename[100];
-        snprintf(filename, sizeof(filename), "../output/%s.csv", city->name);
+        snprintf(filename, sizeof(filename), "output/%s.csv", city->name);
         FILE* file = fopen(filename, "a");
         if (file == NULL) {
             sprintf(message, "Failed to create file for city: %s\n", city->name);
@@ -237,4 +237,22 @@ void* publish_data_thread(void* arg) {
 
     return NULL;
 }
+/*void publish_data(city_data *cities,Config config) {
+    
 
+    // Publish data for each city
+    for (int i = 0; i < config.num_cities; i++) {
+        city_data city = cities[i];
+        char topic[100];
+        snprintf(topic, sizeof(topic), "weather/%s", city.name);
+
+        // Format the payload as JSON or any other desired format
+        char payload[200];
+        snprintf(payload, sizeof(payload), "{\"name\": \"%s\", \"timestamp\": %ld, \"time\": \"%s\", \"temperature\": %.2f, \"temp_min\": %.2f, \"temp_max\": %.2f, \"humidity\": %.2f}",
+         city.name, city.timestamp, city.time, city.temperature, city.temp_min, city.temp_max, city.humidity);
+
+
+        // Publish the data to the MQTT broker
+        mosquitto_publish(mqtt_client, NULL, topic, strlen(payload), payload, 0, false);
+    }
+}*/

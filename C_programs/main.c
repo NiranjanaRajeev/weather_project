@@ -88,7 +88,7 @@ int main() {
            publish_args.num_cities = config.num_cities;
            pthread_t publish_thread;
            pthread_create(&publish_thread, NULL, publish_data_thread, &publish_args);
-           //publish_data(cities_copy,config);
+           //publish_data(cities_copy,config)/
            
            pthread_t threads[5];
            thread_data data_thread;
@@ -100,7 +100,7 @@ int main() {
            for (int i = 0; i < 4 ; i++) {
            	pthread_create(&threads[i], NULL, generate_files_thread, &data_thread);
            }
-           pthread_join(publish_thread, NULL);
+           //pthread_join(publish_thread, NULL);
            for (int i = 0; i < 4; i++) {
            	pthread_join(threads[i], NULL);
            }

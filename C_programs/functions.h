@@ -57,5 +57,5 @@ void log_action(char* message);
 
 void on_connect(struct mosquitto *mosq, void *userdata, int rc);
 void on_publish(struct mosquitto *mosq, void *userdata, int mid);
-//void publish_data(city_data *cities_copy,Config config);
+//void publish_data(city_data *cities,Config config);
 void* publish_data_thread(void* arg);
