@@ -108,9 +108,6 @@ void MainWindow::newMessage(QByteArray message, QMqttTopicName topic)
             double humidity = jsonObj.value("humidity").toDouble();
             ui->textEdit->append("Humidity: " + QString::number(humidity));
         }
-
-        // You can extract and display other fields as needed
-        // For example: timestamp, temp_min, temp_max, etc.
     }
 }
 
