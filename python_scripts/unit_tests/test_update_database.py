@@ -11,6 +11,7 @@ from weather import update_database
 
 class DatabaseUpdateTestCase(unittest.TestCase):
     def setUp(self):
+        # Set up a temporary SQLite database file and necessary test data
         self.db_file = tempfile.NamedTemporaryFile()
         self.db_filepath = self.db_file.name
         self.table_name = "weather_data"
@@ -20,7 +21,8 @@ class DatabaseUpdateTestCase(unittest.TestCase):
         self.temp_max = 25.8
         self.humidity = 70
         self.timestamp = int(datetime.now().timestamp())
-
+        
+        # Create table in the database
         conn = sqlite3.connect(self.db_filepath)
         cursor = conn.cursor()
         cursor.execute(f"CREATE TABLE IF NOT EXISTS {self.table_name} (city TEXT, timestamp INTEGER, time TEXT, temperature REAL, temp_min REAL, temp_max REAL, humidity INTEGER, PRIMARY KEY (city, timestamp))")
@@ -28,17 +30,21 @@ class DatabaseUpdateTestCase(unittest.TestCase):
         conn.close()
 
     def tearDown(self):
+        # Clean up by closing and deleting the temporary database file
         self.db_file.close()
 
     def test_update_database(self):
+        # Test updating the database with new weather data
         update_database(self.db_filepath, self.table_name, self.city, self.temperature, self.temp_min, self.temp_max, self.humidity, self.timestamp)
-
+        
+        # Connect to the database and retrieve the inserted data
         conn = sqlite3.connect(self.db_filepath)
         cursor = conn.cursor()
         cursor.execute(f"SELECT * FROM {self.table_name} WHERE city = ? AND timestamp = ?", (self.city, self.timestamp))
         result = cursor.fetchone()
         conn.close()
-
+        
+        # Assert that the retrieved data matches the inserted data
         self.assertIsNotNone(result)
         self.assertEqual(result[0], self.city)
         self.assertEqual(result[1], self.timestamp)
@@ -58,13 +64,15 @@ class DatabaseUpdateTestCase(unittest.TestCase):
         new_timestamp = self.timestamp + 1
 
         update_database(self.db_filepath, self.table_name, new_city, new_temperature, new_temp_min, new_temp_max, new_humidity, new_timestamp)
-
+        
+        # Connect to the database and retrieve the inserted data
         conn = sqlite3.connect(self.db_filepath)
         cursor = conn.cursor()
         cursor.execute(f"SELECT * FROM {self.table_name} WHERE city = ? AND timestamp = ?", (new_city, new_timestamp))
         result = cursor.fetchone()
         conn.close()
-
+        
+        # Assert that the retrieved data matches the inserted data
         self.assertIsNotNone(result)
         self.assertEqual(result[0], new_city)
         self.assertEqual(result[1], new_timestamp)
