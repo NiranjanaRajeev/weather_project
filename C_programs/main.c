@@ -12,14 +12,6 @@ int main() {
         return 1; // Error loading configuration
     }
     
-    printf("db_filename: %s\n", config.db_filename);
-    printf("table_name: %s\n", config.table_name);
-     printf("Cities:\n");
-    for (int i = 0; i < config.num_cities; i++) {
-         printf("- %s\n", config.city_array[i]);
-    }
-    printf("number of cities: %d \n", config.num_cities);
-    
     city_data cities_copy[config.num_cities];
     
     // Connect to the database
@@ -54,12 +46,12 @@ int main() {
     }
     
     
-    int previous_version = 0;
+    int previous_version = 0; 
     while(1) {
-    	if(is_database_updated(&db,&previous_version)) {
+    	if(is_database_updated(&db,&previous_version)) { //The condition to fetch data is if the database is updated
     	   clock_t start = clock();
     	   char *sql = malloc(strlen(config.table_name) + 20);
-           sprintf(sql, "SELECT * FROM %s", config.table_name);
+           sprintf(sql, "SELECT * FROM %s", config.table_name);  //SQL query 
            char *err_msg = 0; 
            city_data cities[config.num_cities];  // Array of city_data structures
            int value = 0;  
@@ -67,11 +59,11 @@ int main() {
            // Create the callback data structure
            callback_data cb_data;
            cb_data.cities = cities;
-           cb_data.param = &value;
-           int rc = sqlite3_exec(db, sql, callback, &cb_data, &err_msg);
+           cb_data.param = &value;  //initialised as 0
+           int rc = sqlite3_exec(db, sql, callback, &cb_data, &err_msg);  //executing the query
     
 
-           if (rc != SQLITE_OK ) {
+           if (rc != SQLITE_OK ) {   //when there is an error in executing the query
         
              sprintf(message, "Failed to select data\n");
              log_action(message);
@@ -82,14 +74,14 @@ int main() {
         
              return 1;
             } 
-           memcpy(cities_copy, cities, sizeof(cities));
-           publish_thread_data publish_args;
-           publish_args.cities = cities_copy;
+           memcpy(cities_copy, cities, sizeof(cities)); 
+           publish_thread_data publish_args;  //create a structure for data publishing
+           publish_args.cities = cities_copy;  //copy the weather data fetched from the callback 
            publish_args.num_cities = config.num_cities;
-           pthread_t publish_thread;
-           pthread_create(&publish_thread, NULL, publish_data_thread, &publish_args);
-           //publish_data(cities_copy,config)/
+           pthread_t publish_thread; 
+           pthread_create(&publish_thread, NULL, publish_data_thread, &publish_args); //create a thread for handling the publishing to MQTT 
            
+           //thread pool of 5 threads to handle file generation
            pthread_t threads[5];
            thread_data data_thread;
            data_thread.cities = cities;
@@ -100,7 +92,7 @@ int main() {
            for (int i = 0; i < 4 ; i++) {
            	pthread_create(&threads[i], NULL, generate_files_thread, &data_thread);
            }
-           //pthread_join(publish_thread, NULL);
+           pthread_join(publish_thread, NULL); //wait for threads to finish their job
            for (int i = 0; i < 4; i++) {
            	pthread_join(threads[i], NULL);
            }

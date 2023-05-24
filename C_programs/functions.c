@@ -24,11 +24,12 @@ void log_action(char* message) {
 int callback(void *data, int argc, char **argv, 
                     char **column_names) {
     
-    callback_data* cb_data = (callback_data*)data;
-    city_data* cities = cb_data->cities;
+    callback_data* cb_data = (callback_data*)data;  // Cast the callback data to the appropriate struct
+    city_data* cities = cb_data->cities;  // Retrieve the cities and param variables from the callback_data  structure
     int* param = cb_data->param;
 
-    for (int i = 0; i < argc; i++) {
+    for (int i = 0; i < argc; i++) { // Process each column of the current row
+        // Check the column name and update the corresponding city_data field
         if (strcmp(column_names[i], "city") == 0) {
             cities[*param].name = malloc(strlen(argv[i]) + 1);
             strcpy(cities[*param].name, argv[i]);
@@ -48,7 +49,7 @@ int callback(void *data, int argc, char **argv,
             cities[*param].humidity = atof(argv[i]);
         }
     }
-    (*param)++;
+    (*param)++;  // Increment the param variable to move to the next city_data index
     
     return 0;
 }
@@ -86,7 +87,7 @@ int load_config(const char *filename, Config *config) {
         return 1;
     }
 
-    // Store the city names in the Config structure
+    // Store the city names and number of cities in the Config structure
     config->num_cities = json_array_size(cities_array);
     config->city_array = (const char **)malloc(config->num_cities * sizeof(const char *));
     for (size_t i = 0; i < config->num_cities; i++) {
@@ -110,7 +111,7 @@ int connect_to_database(const Config *config, sqlite3 **db) {
     }
     fclose(file);
 
-    int rc = sqlite3_open(db_path, db);
+    int rc = sqlite3_open(db_path, db); //connecting to the database
     if (rc != SQLITE_OK) {
         sprintf(message, "Cannot open database: %s\n", sqlite3_errmsg(*db));
         log_action(message);
@@ -124,46 +125,46 @@ int connect_to_database(const Config *config, sqlite3 **db) {
 }
 bool is_database_updated(sqlite3 **db, int *previous_version) {
     sqlite3_stmt *statement;
-    int result = sqlite3_prepare_v2(*db, "PRAGMA data_version;", -1, &statement, NULL);
+    int result = sqlite3_prepare_v2(*db, "PRAGMA data_version;", -1, &statement, NULL); // Prepare the SQL statement to retrieve the database version
     if (result != SQLITE_OK) {
         sprintf(message, "Failed to execute PRAGMA data_version: %s\n", sqlite3_errmsg(*db));
         log_action(message);
         return false;
     }
     int current_version = 0;
-    result = sqlite3_step(statement);
+    result = sqlite3_step(statement);  // Execute the prepared statement
     if (result == SQLITE_ROW) {
-        current_version = sqlite3_column_int(statement, 0);
+        current_version = sqlite3_column_int(statement, 0); // Retrieve the current version from the result
     }
     
     bool updated = false;
-    if(current_version != *previous_version) {
+    if(current_version != *previous_version) { // Database has been updated
     	sprintf(message,"Database updated");
     	log_action(message);
     	updated = true;
     	*previous_version = current_version;
     }
-    else {
+    else { // Database has not been updated
     	sprintf(message,"Database not updated");
     	log_action(message);
     }
     
     sqlite3_finalize(statement);
     
-    return updated;
+    return updated;  //will be true if database updated and false if database is not updated
 
 }
-void* generate_files_thread(void* arg) {
+void* generate_files_thread(void* arg) { // Cast the thread data argument to the appropriate struct
     thread_data* data_thread = (thread_data*)arg;
     
     while(1) {
     	int current_city;
     	char city_message[100];
-    	pthread_mutex_lock(&data_thread->mutex);
+    	pthread_mutex_lock(&data_thread->mutex);  // Acquire the mutex to safely access and update the current city index
     	current_city = data_thread->current_city++;
     	pthread_mutex_unlock(&data_thread->mutex);
     	
-    	if (current_city >= data_thread->num_cities) {
+    	if (current_city >= data_thread->num_cities) {  // Check if all cities have been processed, and exit the loop if true
     	    break;
     	}
     	
@@ -179,13 +180,14 @@ void* generate_files_thread(void* arg) {
             continue;
         }
         
-        long file_size;
+        long file_size; // Check the size of the file
         fseek(file, 0, SEEK_END);
         file_size = ftell(file);
         
-        if(file_size == 0) {
+        if(file_size == 0) { // If the file is empty, write the header
             fprintf(file, "Name,Timestamp,Time,Temperature,Temp Min,Temp Max,Humidity\n");
-        }    
+        }
+        // Write the city weather data to the file    
         fprintf(file, "%s,%ld,%s,%.2f,%.2f,%.2f,%.2f\n",
                 city->name,city->timestamp,city->time, city->temperature, city->temp_min, city->temp_max, city->humidity);
         sprintf(city_message,"Weather data updated for %s in %s.csv",city->name,city->name);
@@ -202,7 +204,6 @@ void* generate_files_thread(void* arg) {
 void on_connect(struct mosquitto *mosq, void *userdata, int rc) {
     if (rc == MOSQ_ERR_SUCCESS) {
         printf("MQTT connection successful.\n");
-        // Publish initial weather data here if needed
     } else {
         printf("MQTT connection failed: %s\n", mosquitto_strerror(rc));
     }
@@ -210,20 +211,23 @@ void on_connect(struct mosquitto *mosq, void *userdata, int rc) {
 
 // Function to handle MQTT message delivery
 void on_publish(struct mosquitto *mosq, void *userdata, int mid) {
-    printf("MQTT message published (mid: %d)\n", mid);
+    char* city_name = (char*)userdata;
+    sprintf(message,"MQTT message published for city: %s (mid: %d)", city_name, mid);
+    log_action(message);
 }
 
 void* publish_data_thread(void* arg) {
     publish_thread_data *publish_args = (publish_thread_data *)arg;
     city_data* copy_cities = publish_args->cities;
     int num_cities = publish_args->num_cities;
-    
+    char name[20];
 
     // Publish data for each city
     for (int i = 0; i < num_cities; i++) {
         city_data city = copy_cities[i];
         char topic[100];
         snprintf(topic, sizeof(topic), "weather/%s", city.name);
+        strcpy(name,city.name);
 
         // Format the payload as JSON or any other desired format
         char payload[200];
@@ -232,27 +236,11 @@ void* publish_data_thread(void* arg) {
 
 
         // Publish the data to the MQTT broker
+        mosquitto_user_data_set(mqtt_client,name);
         mosquitto_publish(mqtt_client, NULL, topic, strlen(payload), payload, 0, false);
+       
     }
 
     return NULL;
 }
-/*void publish_data(city_data *cities,Config config) {
-    
 
-    // Publish data for each city
-    for (int i = 0; i < config.num_cities; i++) {
-        city_data city = cities[i];
-        char topic[100];
-        snprintf(topic, sizeof(topic), "weather/%s", city.name);
-
-        // Format the payload as JSON or any other desired format
-        char payload[200];
-        snprintf(payload, sizeof(payload), "{\"name\": \"%s\", \"timestamp\": %ld, \"time\": \"%s\", \"temperature\": %.2f, \"temp_min\": %.2f, \"temp_max\": %.2f, \"humidity\": %.2f}",
-         city.name, city.timestamp, city.time, city.temperature, city.temp_min, city.temp_max, city.humidity);
-
-
-        // Publish the data to the MQTT broker
-        mosquitto_publish(mqtt_client, NULL, topic, strlen(payload), payload, 0, false);
-    }
-}*/
