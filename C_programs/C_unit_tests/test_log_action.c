@@ -18,7 +18,7 @@ void test_log_action_success() {
 
     // Assert
     // Check if the log file contains the expected message
-    FILE* logfile = fopen("../log.txt", "r");
+    FILE* logfile = fopen("log.txt", "r");
     char line[100];
     int found = 0;
     while (fgets(line, sizeof(line), logfile)) {

@@ -1,0 +1,37 @@
+At 12:04:12 24-05-2023 Connected to database
+At 12:05:24 24-05-2023 Action logged successfully
+At 12:05:50 24-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 12:05:50 24-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 12:05:50 24-05-2023 Error: 'cities' array is NULL.
+
+At 12:05:59 24-05-2023 Connected to database
+At 12:08:28 24-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 12:08:28 24-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 12:08:29 24-05-2023 Database updated
+At 12:08:29 24-05-2023 Database not updated
+At 12:10:07 24-05-2023 Failed to create file for city: New York
+
+At 12:10:07 24-05-2023 Failed to create file for city: London
+
+At 12:11:02 24-05-2023 Weather data updated for New York in New York.csv
+At 12:11:02 24-05-2023 Weather data updated for London in London.csv
+At 12:19:16 24-05-2023 Connected to database
+At 12:19:20 24-05-2023 Weather data updated for New York in New York.csv
+At 12:19:20 24-05-2023 Weather data updated for London in London.csv
+At 12:19:23 24-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 12:19:23 24-05-2023 Failed to execute PRAGMA data_version: out of memory
+
+At 12:19:24 24-05-2023 Database updated
+At 12:19:24 24-05-2023 Database not updated
+At 12:19:30 24-05-2023 Error: unable to open nonexistent.json: No such file or directory
+
+At 12:19:30 24-05-2023 Error: unable to open invalid_config.json: No such file or directory
+
+At 12:19:30 24-05-2023 Error: 'cities' array is NULL.
+
+At 12:19:35 24-05-2023 Action logged successfully

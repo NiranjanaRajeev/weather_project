@@ -39,8 +39,8 @@ void test_generate_files_thread_valid_data() {
 
     // Assert
     // Check if the output files were generated
-    FILE* file1 = fopen("../output/New York.csv", "r");
-    FILE* file2 = fopen("../output/London.csv", "r");
+    FILE* file1 = fopen("output/New York.csv", "r");
+    FILE* file2 = fopen("output/London.csv", "r");
 
     TEST_ASSERT_NOT_NULL(file1);
     TEST_ASSERT_NOT_NULL(file2);
@@ -49,8 +49,8 @@ void test_generate_files_thread_valid_data() {
     fclose(file2);
 
     // Clean up
-    remove("../output/New York.csv");
-    remove("../output/London.csv");
+    remove("output/New York.csv");
+    remove("output/London.csv");
 }
 
 int main() {
