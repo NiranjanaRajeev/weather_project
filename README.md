@@ -1,9 +1,5 @@
 # *Projet Weather Data*
 
-# *Dossier d'instructions d'installation et de compilation*
-
-Niranjana Subha Rajeev - 2023
-
 ![](RackMultipart20230525-1-7yasw7_html_9f4d251b08dd6c4d.png) ![](RackMultipart20230525-1-7yasw7_html_a91048167f7c9898.png)
 
 ### Prérequis :
