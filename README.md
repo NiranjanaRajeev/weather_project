@@ -6,44 +6,6 @@ Niranjana Subha Rajeev - 2023
 
 ![](RackMultipart20230525-1-7yasw7_html_9f4d251b08dd6c4d.png) ![](RackMultipart20230525-1-7yasw7_html_a91048167f7c9898.png)
 
-# *Sommaire*
-
-[*Prérequis : 3*](#_urj9kbfe97wj)
-
-[*1 - Avant de commencer les installations 3*](#_n681xws44bpu)
-
-[*2 - Installations de la partie liée à Python et à la base de données 3*](#_vw5mzpx2ufcb)
-
-[Installation de Python 3 : 3](#_50l5puuurfj)
-
-[Installation de pip et du module "requests": 3](#_57666ehxyzz7)
-
-[Installation de SQLite3 et de DBBrowser (pour SQLite) : 3](#_a3bc75tjgdmb)
-
-[Test de la partie liée à Python : 3](#_he816in2sm93)
-
-[*3 - Installation de la partie liée au code C 4*](#_n9xbk0yna56b)
-
-[Installation de la librairie jansson : 4](#_g8tnrkgal1uv)
-
-[Installation de la librairie liée à SQLite3 : 4](#_dbzoezont1w)
-
-[Installation de mosquitto MQTT broker : 4](#_upumfofnsth9)
-
-[Installation de la librairie mosquitto : 4](#_beb3iuv7oidq)
-
-[Test de la partie liée au code C : 4](#_q4i6udypehu)
-
-[*4 - Installation de la partie liée au script C++ 5*](#_ctyv53snaotd)
-
-[Installation du module QtMqtt pour une installation dans QtCreator : 5](#_xk31hnndc6s1)
-
-[*5 - Lancement du projet 5*](#_ikyp2ddil4r4)
-
-[Attribution de droits d'éxécution : 5](#_mq9je7eru219)
-
-[Lancement du programme : 5](#_smsub6hh4mbl)
-
 ### Prérequis :
 
 - OS : Ubuntu
