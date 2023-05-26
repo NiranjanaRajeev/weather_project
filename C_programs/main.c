@@ -26,7 +26,7 @@ int main() {
     const char *mqtt_broker = "localhost";
     int mqtt_port = 1883;
     const char *mqtt_client_id = "weather_publisher";
-    int keepalive = 300;
+    int keepalive = 3000;
     
     // Create MQTT client instance
     mqtt_client = mosquitto_new(mqtt_client_id, true, NULL);
@@ -89,7 +89,7 @@ int main() {
            data_thread.current_city = 0;
            pthread_mutex_init(&data_thread.mutex, NULL);
            
-           for (int i = 0; i < 4 ; i++) {
+           for (int i = 0; i < 5 ; i++) {
            	pthread_create(&threads[i], NULL, generate_files_thread, &data_thread);
            }
            pthread_join(publish_thread, NULL); //wait for threads to finish their job

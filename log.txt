@@ -1,9 +1,0 @@
-At 10:07:13 19-05-2023 Connected to database
-At 10:07:13 19-05-2023 Database updated
-At 10:07:13 19-05-2023 Weather data updated for Toulouse in Toulouse.csv
-At 10:07:13 19-05-2023 Weather data updated for Nantes in Nantes.csv
-At 10:07:13 19-05-2023 Weather data updated for Paris in Paris.csv
-At 10:07:13 19-05-2023 Weather data updated for Angers in Angers.csv
-At 10:07:13 19-05-2023 Weather data updated for Nice in Nice.csv
-At 10:07:13 19-05-2023 Weather data updated for Cholet in Cholet.csv
-At 10:07:13 19-05-2023 Weather data updated for Rennes in Rennes.csv

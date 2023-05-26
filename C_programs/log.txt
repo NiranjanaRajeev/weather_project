@@ -1,108 +1,503 @@
-At 14:02:22 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:02:22 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:17:45 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:17:45 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:19:57 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:19:57 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:25:39 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:25:39 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:28:13 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:28:13 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:31:10 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:31:10 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:34:16 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:34:16 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:35:10 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:35:10 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:35:33 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:35:33 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:36:05 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:36:05 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:36:05 19-05-2023 Error: unexpected token near '}'
-
-At 14:37:33 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:37:33 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:53:41 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:53:41 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:53:41 19-05-2023 Error: 'cities' array is NULL.
-
-At 14:54:09 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 14:54:09 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 14:54:09 19-05-2023 Error: 'cities' array is NULL.
-
-At 15:12:22 19-05-2023 Connected to database
-At 15:12:22 19-05-2023 Connected to database
-At 15:12:22 19-05-2023 Connected to database
-At 15:21:07 19-05-2023 Connected to database
-At 15:21:07 19-05-2023 Connected to database
-At 15:23:03 19-05-2023 Connected to database
-At 15:23:03 19-05-2023 Connected to database
-At 15:25:17 19-05-2023 Connected to database
-At 15:25:17 19-05-2023 Connected to database
-At 15:27:14 19-05-2023 Connected to database
-At 15:27:14 19-05-2023 Connected to database
-At 15:32:29 19-05-2023 Error: unable to open nonexistent.json: No such file or directory
-
-At 15:32:29 19-05-2023 Error: unable to open invalid_config.json: No such file or directory
-
-At 15:32:29 19-05-2023 Error: 'cities' array is NULL.
-
-At 15:35:25 19-05-2023 Connected to database
-At 15:38:35 19-05-2023 Connected to database
-At 15:40:22 19-05-2023 Connected to database
-At 15:55:34 19-05-2023 Action logged successfully
-At 15:56:06 19-05-2023 Action logged successfully
-At 17:23:05 19-05-2023 Failed to execute PRAGMA data_version: out of memory
-
-At 17:23:05 19-05-2023 Failed to execute PRAGMA data_version: out of memory
-
-At 17:23:06 19-05-2023 Database updated
-At 17:23:06 19-05-2023 Failed to execute PRAGMA data_version: out of memory
-
-At 17:26:26 19-05-2023 Failed to execute PRAGMA data_version: out of memory
-
-At 17:26:26 19-05-2023 Failed to execute PRAGMA data_version: out of memory
-
-At 17:26:26 19-05-2023 Database updated
-At 17:26:26 19-05-2023 Failed to execute PRAGMA data_version: out of memory
-
-At 17:26:43 19-05-2023 Failed to execute PRAGMA data_version: out of memory
-
-At 17:26:43 19-05-2023 Failed to execute PRAGMA data_version: out of memory
-
-At 17:26:43 19-05-2023 Database updated
-At 17:26:43 19-05-2023 Database not updated
-At 17:48:17 19-05-2023 Weather data updated for New York in New York.csv
-At 17:48:17 19-05-2023 Weather data updated for London in London.csv
-At 17:48:17 19-05-2023 Weather data updated for Invalid City in Invalid City.csv
-At 17:54:20 19-05-2023 Weather data updated for New York in New York.csv
-At 17:54:20 19-05-2023 Weather data updated for London in London.csv
-At 17:54:20 19-05-2023 Weather data updated for Invalid City in Invalid City.csv
-At 17:54:36 19-05-2023 Weather data updated for New York in New York.csv
-At 17:54:36 19-05-2023 Weather data updated for London in London.csv
+At 10:34:18 25-05-2023 Connected to database
+At 10:34:18 25-05-2023 Database updated
+At 10:34:18 25-05-2023 MQTT message published for city: Toulouse (mid: 1)
+At 10:34:18 25-05-2023 MQTT message published for city: Nantes (mid: 2)
+At 10:34:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 10:34:18 25-05-2023 MQTT message published for city: Nice (mid: 3)
+At 10:34:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 10:34:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 10:34:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 10:34:18 25-05-2023 MQTT message published for city: Paris (mid: 4)
+At 10:34:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 10:34:18 25-05-2023 MQTT message published for city: Cholet (mid: 5)
+At 10:34:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 10:34:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 10:34:18 25-05-2023 MQTT message published for city: Angers (mid: 6)
+At 10:34:18 25-05-2023 MQTT message published for city: Rennes (mid: 7)
+At 10:36:18 25-05-2023 Database updated
+At 10:36:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 10:36:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 10:36:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 10:36:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 10:36:18 25-05-2023 MQTT message published for city: Toulouse (mid: 8)
+At 10:36:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 10:36:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 10:36:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 10:36:18 25-05-2023 MQTT message published for city: Nantes (mid: 9)
+At 10:36:18 25-05-2023 MQTT message published for city: Nice (mid: 10)
+At 10:36:18 25-05-2023 MQTT message published for city: Paris (mid: 11)
+At 10:36:18 25-05-2023 MQTT message published for city: Cholet (mid: 12)
+At 10:36:18 25-05-2023 MQTT message published for city: Angers (mid: 13)
+At 10:36:18 25-05-2023 MQTT message published for city: Rennes (mid: 14)
+At 10:38:18 25-05-2023 Database not updated
+At 10:40:18 25-05-2023 Database not updated
+At 10:42:18 25-05-2023 Database not updated
+At 10:44:18 25-05-2023 Database updated
+At 10:44:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 10:44:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 10:44:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 10:44:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 10:44:18 25-05-2023 MQTT message published for city: Toulouse (mid: 15)
+At 10:44:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 10:44:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 10:44:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 10:44:18 25-05-2023 MQTT message published for city: Nantes (mid: 16)
+At 10:44:18 25-05-2023 MQTT message published for city: Nice (mid: 17)
+At 10:44:18 25-05-2023 MQTT message published for city: Paris (mid: 18)
+At 10:44:18 25-05-2023 MQTT message published for city: Cholet (mid: 19)
+At 10:44:18 25-05-2023 MQTT message published for city: Angers (mid: 20)
+At 10:44:18 25-05-2023 MQTT message published for city: Rennes (mid: 21)
+At 10:46:18 25-05-2023 Database updated
+At 10:46:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 10:46:18 25-05-2023 MQTT message published for city: Toulouse (mid: 22)
+At 10:46:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 10:46:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 10:46:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 10:46:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 10:46:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 10:46:18 25-05-2023 MQTT message published for city: Nantes (mid: 23)
+At 10:46:18 25-05-2023 MQTT message published for city: Nice (mid: 24)
+At 10:46:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 10:46:18 25-05-2023 MQTT message published for city: Paris (mid: 25)
+At 10:46:18 25-05-2023 MQTT message published for city: Cholet (mid: 26)
+At 10:46:18 25-05-2023 MQTT message published for city: Angers (mid: 27)
+At 10:46:18 25-05-2023 MQTT message published for city: Rennes (mid: 28)
+At 10:48:18 25-05-2023 Database not updated
+At 10:50:18 25-05-2023 Database not updated
+At 10:52:18 25-05-2023 Database not updated
+At 10:54:18 25-05-2023 Database updated
+At 10:54:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 10:54:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 10:54:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 10:54:18 25-05-2023 MQTT message published for city: Toulouse (mid: 29)
+At 10:54:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 10:54:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 10:54:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 10:54:18 25-05-2023 MQTT message published for city: Nantes (mid: 30)
+At 10:54:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 10:54:18 25-05-2023 MQTT message published for city: Nice (mid: 31)
+At 10:54:18 25-05-2023 MQTT message published for city: Paris (mid: 32)
+At 10:54:18 25-05-2023 MQTT message published for city: Cholet (mid: 33)
+At 10:54:18 25-05-2023 MQTT message published for city: Angers (mid: 34)
+At 10:54:18 25-05-2023 MQTT message published for city: Rennes (mid: 35)
+At 10:56:18 25-05-2023 Database updated
+At 10:56:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 10:56:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 10:56:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 10:56:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 10:56:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 10:56:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 10:56:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 10:56:18 25-05-2023 MQTT message published for city: Toulouse (mid: 36)
+At 10:56:18 25-05-2023 MQTT message published for city: Nantes (mid: 37)
+At 10:56:18 25-05-2023 MQTT message published for city: Nice (mid: 38)
+At 10:56:18 25-05-2023 MQTT message published for city: Paris (mid: 39)
+At 10:56:18 25-05-2023 MQTT message published for city: Cholet (mid: 40)
+At 10:56:18 25-05-2023 MQTT message published for city: Angers (mid: 41)
+At 10:56:18 25-05-2023 MQTT message published for city: Rennes (mid: 42)
+At 10:58:18 25-05-2023 Database not updated
+At 11:00:18 25-05-2023 Database not updated
+At 11:02:18 25-05-2023 Database not updated
+At 11:04:18 25-05-2023 Database updated
+At 11:04:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:04:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:04:18 25-05-2023 MQTT message published for city: Toulouse (mid: 43)
+At 11:04:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:04:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:04:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:04:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:04:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:04:18 25-05-2023 MQTT message published for city: Nantes (mid: 44)
+At 11:04:18 25-05-2023 MQTT message published for city: Nice (mid: 45)
+At 11:04:18 25-05-2023 MQTT message published for city: Paris (mid: 46)
+At 11:04:18 25-05-2023 MQTT message published for city: Cholet (mid: 47)
+At 11:04:18 25-05-2023 MQTT message published for city: Angers (mid: 48)
+At 11:04:18 25-05-2023 MQTT message published for city: Rennes (mid: 49)
+At 11:06:18 25-05-2023 Database updated
+At 11:06:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:06:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:06:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:06:18 25-05-2023 MQTT message published for city: Toulouse (mid: 50)
+At 11:06:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:06:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:06:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:06:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:06:18 25-05-2023 MQTT message published for city: Nantes (mid: 51)
+At 11:06:18 25-05-2023 MQTT message published for city: Nice (mid: 52)
+At 11:06:18 25-05-2023 MQTT message published for city: Paris (mid: 53)
+At 11:06:18 25-05-2023 MQTT message published for city: Cholet (mid: 54)
+At 11:06:18 25-05-2023 MQTT message published for city: Angers (mid: 55)
+At 11:06:18 25-05-2023 MQTT message published for city: Rennes (mid: 56)
+At 11:08:18 25-05-2023 Database not updated
+At 11:10:18 25-05-2023 Database not updated
+At 11:12:18 25-05-2023 Database not updated
+At 11:14:18 25-05-2023 Database updated
+At 11:14:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:14:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:14:18 25-05-2023 MQTT message published for city: Toulouse (mid: 57)
+At 11:14:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:14:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:14:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:14:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:14:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:14:18 25-05-2023 MQTT message published for city: Nantes (mid: 58)
+At 11:14:18 25-05-2023 MQTT message published for city: Nice (mid: 59)
+At 11:14:18 25-05-2023 MQTT message published for city: Paris (mid: 60)
+At 11:14:18 25-05-2023 MQTT message published for city: Cholet (mid: 61)
+At 11:14:18 25-05-2023 MQTT message published for city: Angers (mid: 62)
+At 11:14:18 25-05-2023 MQTT message published for city: Rennes (mid: 63)
+At 11:16:18 25-05-2023 Database updated
+At 11:16:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:16:18 25-05-2023 MQTT message published for city: Toulouse (mid: 64)
+At 11:16:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:16:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:16:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:16:18 25-05-2023 MQTT message published for city: Nantes (mid: 65)
+At 11:16:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:16:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:16:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:16:18 25-05-2023 MQTT message published for city: Nice (mid: 66)
+At 11:16:18 25-05-2023 MQTT message published for city: Paris (mid: 67)
+At 11:16:18 25-05-2023 MQTT message published for city: Cholet (mid: 68)
+At 11:16:18 25-05-2023 MQTT message published for city: Angers (mid: 69)
+At 11:16:18 25-05-2023 MQTT message published for city: Rennes (mid: 70)
+At 11:18:18 25-05-2023 Database not updated
+At 11:20:18 25-05-2023 Database not updated
+At 11:22:18 25-05-2023 Database not updated
+At 11:24:18 25-05-2023 Database updated
+At 11:24:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:24:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:24:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:24:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:24:18 25-05-2023 MQTT message published for city: Toulouse (mid: 71)
+At 11:24:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:24:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:24:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:24:18 25-05-2023 MQTT message published for city: Nantes (mid: 72)
+At 11:24:18 25-05-2023 MQTT message published for city: Nice (mid: 73)
+At 11:24:18 25-05-2023 MQTT message published for city: Paris (mid: 74)
+At 11:24:18 25-05-2023 MQTT message published for city: Cholet (mid: 75)
+At 11:24:18 25-05-2023 MQTT message published for city: Angers (mid: 76)
+At 11:24:18 25-05-2023 MQTT message published for city: Rennes (mid: 77)
+At 11:26:18 25-05-2023 Database updated
+At 11:26:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:26:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:26:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:26:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:26:18 25-05-2023 MQTT message published for city: Toulouse (mid: 78)
+At 11:26:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:26:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:26:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:26:18 25-05-2023 MQTT message published for city: Nantes (mid: 79)
+At 11:26:18 25-05-2023 MQTT message published for city: Nice (mid: 80)
+At 11:26:18 25-05-2023 MQTT message published for city: Paris (mid: 81)
+At 11:26:18 25-05-2023 MQTT message published for city: Cholet (mid: 82)
+At 11:26:18 25-05-2023 MQTT message published for city: Angers (mid: 83)
+At 11:26:18 25-05-2023 MQTT message published for city: Rennes (mid: 84)
+At 11:28:18 25-05-2023 Database not updated
+At 11:30:18 25-05-2023 Database not updated
+At 11:32:18 25-05-2023 Database not updated
+At 11:34:18 25-05-2023 Database updated
+At 11:34:18 25-05-2023 MQTT message published for city: Toulouse (mid: 85)
+At 11:34:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:34:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:34:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:34:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:34:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:34:18 25-05-2023 MQTT message published for city: Nantes (mid: 86)
+At 11:34:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:34:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:34:18 25-05-2023 MQTT message published for city: Nice (mid: 87)
+At 11:34:18 25-05-2023 MQTT message published for city: Paris (mid: 88)
+At 11:34:18 25-05-2023 MQTT message published for city: Cholet (mid: 89)
+At 11:34:18 25-05-2023 MQTT message published for city: Angers (mid: 90)
+At 11:34:18 25-05-2023 MQTT message published for city: Rennes (mid: 91)
+At 11:36:18 25-05-2023 Database updated
+At 11:36:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:36:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:36:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:36:18 25-05-2023 MQTT message published for city: Toulouse (mid: 92)
+At 11:36:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:36:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:36:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:36:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:36:18 25-05-2023 MQTT message published for city: Nantes (mid: 93)
+At 11:36:18 25-05-2023 MQTT message published for city: Nice (mid: 94)
+At 11:36:18 25-05-2023 MQTT message published for city: Paris (mid: 95)
+At 11:36:18 25-05-2023 MQTT message published for city: Cholet (mid: 96)
+At 11:36:18 25-05-2023 MQTT message published for city: Angers (mid: 97)
+At 11:36:18 25-05-2023 MQTT message published for city: Rennes (mid: 98)
+At 11:38:18 25-05-2023 Database not updated
+At 11:40:18 25-05-2023 Database not updated
+At 11:42:18 25-05-2023 Database not updated
+At 11:44:18 25-05-2023 Database updated
+At 11:44:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:44:18 25-05-2023 MQTT message published for city: Toulouse (mid: 99)
+At 11:44:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:44:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:44:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:44:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:44:18 25-05-2023 MQTT message published for city: Nantes (mid: 100)
+At 11:44:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:44:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:44:18 25-05-2023 MQTT message published for city: Nice (mid: 101)
+At 11:44:18 25-05-2023 MQTT message published for city: Paris (mid: 102)
+At 11:44:18 25-05-2023 MQTT message published for city: Cholet (mid: 103)
+At 11:44:18 25-05-2023 MQTT message published for city: Angers (mid: 104)
+At 11:44:18 25-05-2023 MQTT message published for city: Rennes (mid: 105)
+At 11:46:18 25-05-2023 Database updated
+At 11:46:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:46:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:46:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:46:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:46:18 25-05-2023 MQTT message published for city: Toulouse (mid: 106)
+At 11:46:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:46:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:46:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:46:18 25-05-2023 MQTT message published for city: Nantes (mid: 107)
+At 11:46:18 25-05-2023 MQTT message published for city: Nice (mid: 108)
+At 11:46:18 25-05-2023 MQTT message published for city: Paris (mid: 109)
+At 11:46:18 25-05-2023 MQTT message published for city: Cholet (mid: 110)
+At 11:46:18 25-05-2023 MQTT message published for city: Angers (mid: 111)
+At 11:46:18 25-05-2023 MQTT message published for city: Rennes (mid: 112)
+At 11:48:18 25-05-2023 Database not updated
+At 11:50:18 25-05-2023 Database not updated
+At 11:52:18 25-05-2023 Database not updated
+At 11:54:18 25-05-2023 Database updated
+At 11:54:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:54:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:54:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:54:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:54:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:54:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:54:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:54:18 25-05-2023 MQTT message published for city: Toulouse (mid: 113)
+At 11:54:18 25-05-2023 MQTT message published for city: Nantes (mid: 114)
+At 11:54:18 25-05-2023 MQTT message published for city: Nice (mid: 115)
+At 11:54:18 25-05-2023 MQTT message published for city: Paris (mid: 116)
+At 11:54:18 25-05-2023 MQTT message published for city: Cholet (mid: 117)
+At 11:54:18 25-05-2023 MQTT message published for city: Angers (mid: 118)
+At 11:54:18 25-05-2023 MQTT message published for city: Rennes (mid: 119)
+At 11:56:18 25-05-2023 Database updated
+At 11:56:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 11:56:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 11:56:18 25-05-2023 MQTT message published for city: Toulouse (mid: 120)
+At 11:56:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 11:56:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 11:56:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 11:56:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 11:56:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 11:56:18 25-05-2023 MQTT message published for city: Nantes (mid: 121)
+At 11:56:18 25-05-2023 MQTT message published for city: Nice (mid: 122)
+At 11:56:18 25-05-2023 MQTT message published for city: Paris (mid: 123)
+At 11:56:18 25-05-2023 MQTT message published for city: Cholet (mid: 124)
+At 11:56:18 25-05-2023 MQTT message published for city: Angers (mid: 125)
+At 11:56:18 25-05-2023 MQTT message published for city: Rennes (mid: 126)
+At 11:58:18 25-05-2023 Database not updated
+At 12:00:18 25-05-2023 Database not updated
+At 12:02:18 25-05-2023 Database not updated
+At 12:04:18 25-05-2023 Database updated
+At 12:04:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:04:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:04:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:04:18 25-05-2023 MQTT message published for city: Toulouse (mid: 127)
+At 12:04:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:04:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:04:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:04:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:04:18 25-05-2023 MQTT message published for city: Nantes (mid: 128)
+At 12:04:18 25-05-2023 MQTT message published for city: Nice (mid: 129)
+At 12:04:18 25-05-2023 MQTT message published for city: Paris (mid: 130)
+At 12:04:18 25-05-2023 MQTT message published for city: Cholet (mid: 131)
+At 12:04:18 25-05-2023 MQTT message published for city: Angers (mid: 132)
+At 12:04:18 25-05-2023 MQTT message published for city: Rennes (mid: 133)
+At 12:06:18 25-05-2023 Database updated
+At 12:06:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:06:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:06:18 25-05-2023 MQTT message published for city: Toulouse (mid: 134)
+At 12:06:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:06:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:06:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:06:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:06:18 25-05-2023 MQTT message published for city: Nantes (mid: 135)
+At 12:06:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:06:18 25-05-2023 MQTT message published for city: Nice (mid: 136)
+At 12:06:18 25-05-2023 MQTT message published for city: Paris (mid: 137)
+At 12:06:18 25-05-2023 MQTT message published for city: Cholet (mid: 138)
+At 12:06:18 25-05-2023 MQTT message published for city: Angers (mid: 139)
+At 12:06:18 25-05-2023 MQTT message published for city: Rennes (mid: 140)
+At 12:08:18 25-05-2023 Database not updated
+At 12:10:18 25-05-2023 Database not updated
+At 12:12:18 25-05-2023 Database not updated
+At 12:14:18 25-05-2023 Database updated
+At 12:14:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:14:18 25-05-2023 MQTT message published for city: Toulouse (mid: 141)
+At 12:14:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:14:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:14:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:14:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:14:18 25-05-2023 MQTT message published for city: Nantes (mid: 142)
+At 12:14:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:14:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:14:18 25-05-2023 MQTT message published for city: Nice (mid: 143)
+At 12:14:18 25-05-2023 MQTT message published for city: Paris (mid: 144)
+At 12:14:18 25-05-2023 MQTT message published for city: Cholet (mid: 145)
+At 12:14:18 25-05-2023 MQTT message published for city: Angers (mid: 146)
+At 12:14:18 25-05-2023 MQTT message published for city: Rennes (mid: 147)
+At 12:16:18 25-05-2023 Database updated
+At 12:16:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:16:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:16:18 25-05-2023 MQTT message published for city: Toulouse (mid: 148)
+At 12:16:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:16:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:16:18 25-05-2023 MQTT message published for city: Nantes (mid: 149)
+At 12:16:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:16:18 25-05-2023 MQTT message published for city: Nice (mid: 150)
+At 12:16:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:16:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:16:18 25-05-2023 MQTT message published for city: Paris (mid: 151)
+At 12:16:18 25-05-2023 MQTT message published for city: Cholet (mid: 152)
+At 12:16:18 25-05-2023 MQTT message published for city: Angers (mid: 153)
+At 12:16:18 25-05-2023 MQTT message published for city: Rennes (mid: 154)
+At 12:18:18 25-05-2023 Database not updated
+At 12:20:18 25-05-2023 Database not updated
+At 12:22:18 25-05-2023 Database not updated
+At 12:24:18 25-05-2023 Database updated
+At 12:24:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:24:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:24:18 25-05-2023 MQTT message published for city: Toulouse (mid: 155)
+At 12:24:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:24:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:24:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:24:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:24:18 25-05-2023 MQTT message published for city: Nantes (mid: 156)
+At 12:24:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:24:18 25-05-2023 MQTT message published for city: Nice (mid: 157)
+At 12:24:18 25-05-2023 MQTT message published for city: Paris (mid: 158)
+At 12:24:18 25-05-2023 MQTT message published for city: Cholet (mid: 159)
+At 12:24:18 25-05-2023 MQTT message published for city: Angers (mid: 160)
+At 12:24:18 25-05-2023 MQTT message published for city: Rennes (mid: 161)
+At 12:26:18 25-05-2023 Database updated
+At 12:26:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:26:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:26:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:26:18 25-05-2023 MQTT message published for city: Toulouse (mid: 162)
+At 12:26:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:26:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:26:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:26:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:26:18 25-05-2023 MQTT message published for city: Nantes (mid: 163)
+At 12:26:18 25-05-2023 MQTT message published for city: Nice (mid: 164)
+At 12:26:18 25-05-2023 MQTT message published for city: Paris (mid: 165)
+At 12:26:18 25-05-2023 MQTT message published for city: Cholet (mid: 166)
+At 12:26:18 25-05-2023 MQTT message published for city: Angers (mid: 167)
+At 12:26:18 25-05-2023 MQTT message published for city: Rennes (mid: 168)
+At 12:28:18 25-05-2023 Database updated
+At 12:28:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:28:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:28:18 25-05-2023 MQTT message published for city: Toulouse (mid: 169)
+At 12:28:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:28:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:28:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:28:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:28:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:28:18 25-05-2023 MQTT message published for city: Nantes (mid: 170)
+At 12:28:18 25-05-2023 MQTT message published for city: Nice (mid: 171)
+At 12:28:18 25-05-2023 MQTT message published for city: Paris (mid: 172)
+At 12:28:18 25-05-2023 MQTT message published for city: Cholet (mid: 173)
+At 12:28:18 25-05-2023 MQTT message published for city: Angers (mid: 174)
+At 12:28:18 25-05-2023 MQTT message published for city: Rennes (mid: 175)
+At 12:30:18 25-05-2023 Database updated
+At 12:30:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:30:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:30:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:30:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:30:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:30:18 25-05-2023 MQTT message published for city: Toulouse (mid: 176)
+At 12:30:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:30:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:30:18 25-05-2023 MQTT message published for city: Nantes (mid: 177)
+At 12:30:18 25-05-2023 MQTT message published for city: Nice (mid: 178)
+At 12:30:18 25-05-2023 MQTT message published for city: Paris (mid: 179)
+At 12:30:18 25-05-2023 MQTT message published for city: Cholet (mid: 180)
+At 12:30:18 25-05-2023 MQTT message published for city: Angers (mid: 181)
+At 12:30:18 25-05-2023 MQTT message published for city: Rennes (mid: 182)
+At 12:32:18 25-05-2023 Database updated
+At 12:32:18 25-05-2023 MQTT message published for city: Toulouse (mid: 183)
+At 12:32:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:32:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:32:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:32:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:32:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:32:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:32:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:32:18 25-05-2023 MQTT message published for city: Nantes (mid: 184)
+At 12:32:18 25-05-2023 MQTT message published for city: Nice (mid: 185)
+At 12:32:18 25-05-2023 MQTT message published for city: Paris (mid: 186)
+At 12:32:18 25-05-2023 MQTT message published for city: Cholet (mid: 187)
+At 12:32:18 25-05-2023 MQTT message published for city: Angers (mid: 188)
+At 12:32:18 25-05-2023 MQTT message published for city: Rennes (mid: 189)
+At 12:34:18 25-05-2023 Database updated
+At 12:34:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:34:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:34:18 25-05-2023 MQTT message published for city: Toulouse (mid: 190)
+At 12:34:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:34:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:34:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:34:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:34:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:34:18 25-05-2023 MQTT message published for city: Nantes (mid: 191)
+At 12:34:18 25-05-2023 MQTT message published for city: Nice (mid: 192)
+At 12:34:18 25-05-2023 MQTT message published for city: Paris (mid: 193)
+At 12:34:18 25-05-2023 MQTT message published for city: Cholet (mid: 194)
+At 12:34:18 25-05-2023 MQTT message published for city: Angers (mid: 195)
+At 12:34:18 25-05-2023 MQTT message published for city: Rennes (mid: 196)
+At 12:36:18 25-05-2023 Database updated
+At 12:36:18 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 12:36:18 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 12:36:18 25-05-2023 Weather data updated for Nice in Nice.csv
+At 12:36:18 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 12:36:18 25-05-2023 Weather data updated for Paris in Paris.csv
+At 12:36:18 25-05-2023 MQTT message published for city: Toulouse (mid: 197)
+At 12:36:18 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 12:36:18 25-05-2023 Weather data updated for Angers in Angers.csv
+At 12:36:18 25-05-2023 MQTT message published for city: Nantes (mid: 198)
+At 12:36:18 25-05-2023 MQTT message published for city: Nice (mid: 199)
+At 12:36:18 25-05-2023 MQTT message published for city: Paris (mid: 200)
+At 12:36:18 25-05-2023 MQTT message published for city: Cholet (mid: 201)
+At 12:36:18 25-05-2023 MQTT message published for city: Angers (mid: 202)
+At 12:36:18 25-05-2023 MQTT message published for city: Rennes (mid: 203)
+At 23:23:08 25-05-2023 Connected to database
+At 23:23:08 25-05-2023 Database updated
+At 23:23:08 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 23:23:08 25-05-2023 Weather data updated for Paris in Paris.csv
+At 23:23:08 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 23:23:08 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 23:23:08 25-05-2023 MQTT message published for city: Toulouse (mid: 1)
+At 23:23:08 25-05-2023 Weather data updated for Nice in Nice.csv
+At 23:23:08 25-05-2023 Weather data updated for Angers in Angers.csv
+At 23:23:08 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 23:23:08 25-05-2023 MQTT message published for city: Nantes (mid: 2)
+At 23:23:08 25-05-2023 MQTT message published for city: Nice (mid: 3)
+At 23:23:08 25-05-2023 MQTT message published for city: Paris (mid: 4)
+At 23:23:08 25-05-2023 MQTT message published for city: Cholet (mid: 5)
+At 23:23:08 25-05-2023 MQTT message published for city: Angers (mid: 6)
+At 23:23:08 25-05-2023 MQTT message published for city: Rennes (mid: 7)
+At 23:25:08 25-05-2023 Database updated
+At 23:25:08 25-05-2023 Weather data updated for Toulouse in Toulouse.csv
+At 23:25:08 25-05-2023 Weather data updated for Nantes in Nantes.csv
+At 23:25:08 25-05-2023 Weather data updated for Nice in Nice.csv
+At 23:25:08 25-05-2023 Weather data updated for Cholet in Cholet.csv
+At 23:25:08 25-05-2023 MQTT message published for city: Toulouse (mid: 8)
+At 23:25:08 25-05-2023 Weather data updated for Angers in Angers.csv
+At 23:25:08 25-05-2023 Weather data updated for Rennes in Rennes.csv
+At 23:25:08 25-05-2023 Weather data updated for Paris in Paris.csv
+At 23:25:08 25-05-2023 MQTT message published for city: Nantes (mid: 9)
+At 23:25:08 25-05-2023 MQTT message published for city: Nice (mid: 10)
+At 23:25:08 25-05-2023 MQTT message published for city: Paris (mid: 11)
+At 23:25:08 25-05-2023 MQTT message published for city: Cholet (mid: 12)
+At 23:25:08 25-05-2023 MQTT message published for city: Angers (mid: 13)
+At 23:25:08 25-05-2023 MQTT message published for city: Rennes (mid: 14)
+At 23:27:08 25-05-2023 Database not updated
+At 00:43:23 26-05-2023 Connected to database
+At 00:43:23 26-05-2023 Database not updated

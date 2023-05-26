@@ -9,7 +9,8 @@
        "db_location": "/home/niranjana/Projet_Final"
        },
     "general": {  
-       "cities": ["Toulouse","Nantes","Nice","Paris","Cholet","Angers","Rennes"]
+       "cities": ["Toulouse","Nantes","Nice","Paris","Cholet","Angers","Rennes"],
+       "table_params": ["city","timestamp","time","temperature","temp_min","temp_max","humidity"]
   }
 }
    

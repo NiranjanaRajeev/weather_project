@@ -203,9 +203,11 @@ void* generate_files_thread(void* arg) { // Cast the thread data argument to the
 // Function to handle MQTT connection status
 void on_connect(struct mosquitto *mosq, void *userdata, int rc) {
     if (rc == MOSQ_ERR_SUCCESS) {
-        printf("MQTT connection successful.\n");
+        sprintf(message,"MQTT connection successful.\n");
+        log_action(message);
     } else {
-        printf("MQTT connection failed: %s\n", mosquitto_strerror(rc));
+        sprintf(message,"MQTT connection failed: %s\n", mosquitto_strerror(rc));
+        log_action(message);
     }
 }
 
